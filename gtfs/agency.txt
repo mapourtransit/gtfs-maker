@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_phone,agency_lang
+1,Miccolis S.p.A.,http://www.miccolis-spa.it,Europe/Rome,+39 0835 344032,it

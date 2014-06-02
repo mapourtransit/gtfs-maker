@@ -1,0 +1,6 @@
+[out:json];                                                                                                                                  
+rel
+  ["type"="route_master"]
+  ["operator"~"[Mm]iccolis"];     
+rel(r);
+out body;

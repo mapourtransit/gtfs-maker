@@ -1,0 +1,8 @@
+[out:json];                                                                                                                                  
+rel
+  ["type"="route_master"]
+  ["operator"~"[Mm]iccolis"];     
+rel(r);
+node(r)
+  ["public_transport"="platform"];
+out body;
