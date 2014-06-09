@@ -2,6 +2,7 @@ var fs = require('fs');
 var async = require('async');
 var _ = require('lodash');
 var request = require('superagent');
+var uuid = require('uuid');
 
 var OSM3S_API = 'http://api.openstreetmap.fr/oapi/interpreter';
 var GPX_API = 'http://osmrm.openstreetmap.de/gpx.jsp?relation=';
@@ -11,11 +12,12 @@ var stopsQuery = fs.readFileSync('queries/get-stops-nodes.osm3s').toString();
 var routesQuery = fs.readFileSync('queries/get-routes-rel.osm3s').toString();
 
 var routes = {};
-var trips = {};
+var trips = [];
 var stops = {};
 var frequencies = [];
 var stoptimes = [];
 var shapes = [];
+
 
 
 var csvjson = require('csvjson');
@@ -41,7 +43,6 @@ _.each(lineIds, function(lineId){
 });
 
 
-
 function buildStops(callback){
  request.get(OSM3S_API)
   .query({data: stopsQuery})
@@ -63,9 +64,9 @@ function buildStops(callback){
         }
       }
     });
-    callback(null, 'one'); 
+    callback(null, 'one');
   });
-  
+
 }
 
 function buildRoutesAndTrips(callback){
@@ -84,16 +85,18 @@ function buildRoutesAndTrips(callback){
       };
       _.each( relation.members, function(member){
         if (member.type == 'relation'){
-          // TOFIX
+          var shapeId = member.ref;
+
           _.each( ['W', 'NW', 'S-W'], function(serviceId){
-            trips[ member.ref ] = {
-              'trip_id': member.ref ,
+            var tripId = uuid.v4();
+            trips.push({
+              'trip_id': tripId,
               'route_id': relation.id,
-              'shape_id': member.ref,
+              'shape_id': shapeId,
               'service_id':serviceId
-            };
+            });
             frequencies.push({
-              'trip_id': member.ref ,
+              'trip_id': tripId ,
               'start_time':'__START_TIME__',
               'end_time':'__END_TIME__',
               'headway_secs':'__60__',
@@ -104,8 +107,8 @@ function buildRoutesAndTrips(callback){
       });
     });
      callback(null, 'two');
-  }); 
- 
+  });
+
 }
 
 function buildRoutes(callback){
@@ -115,47 +118,62 @@ function buildRoutes(callback){
     console.log('Building routes');
     var elements = JSON.parse(response.text).elements;
     _.each(elements, function(element){
+
       var index = 1;
+
       _.each(element.members, function(member){
-        var pole, results, time;
+
+        var pole;
+
         if (member.type == 'node' && member.role == 'platform'){
-         
+
           if ( stops[member.ref] ){
             pole = stops[ member.ref ]['stop_code'];
           }
-          
-          results = _.filter(timetable[  routes[trips[element.id ].route_id]['route_short_name']  ], function(row){
-            return row.id == pole;
+
+          var tripResults = _.filter(trips, function(trip){
+            return trip['shape_id'] == element.id;
           });
-          if ( results.length > 0 ){
-            time = results[0].time;
-          }
-          stoptimes.push({
-            'trip_id':element.id ,
-            'arrival_time':time,
-            'departure_time':time,
-            'stop_id':member.ref,
-            'stop_sequence': index++
-          });     
+
+          _.each(tripResults, function(trip){
+            var time, results;
+            results = _.filter(timetable[  routes[ trip['route_id'] ] ['route_short_name']   ],
+            function(row){
+              debugger;
+              return row.id == pole;
+            });
+            if ( results.length > 0 ){
+              time = results[0].time;
+            }
+            stoptimes.push({
+              'trip_id': trip['trip_id'],
+              'arrival_time':time,
+              'departure_time':time,
+              'stop_id':member.ref,
+              'stop_sequence': index
+            });
+          });
+
+          index++;
         }
       });
 
     });
     callback(null, 'three');
-  }); 
-  
+  });
+
 }
 
 function buildShapes(callback){
 
   // TODO get GPX from relation (tripId)
   // TODO add entries to shapes
-  
+
   _.each( _.values(trips), function(trip){
-    request.get(GPX_API + trip['trip_id'])
+    request.get(GPX_API + trip['shape_id'])
         .end(function(response){
-          console.log(response);
-        }); 
+          // console.log(response);
+        });
   });
 
   callback(null, 'four');
@@ -164,7 +182,7 @@ function buildShapes(callback){
 function toCSV(objArray) {
   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
   var str = '';
-  
+
   for (var key in array[0]){
     str += key + ',';
   }
@@ -193,11 +211,10 @@ async.series([
     function print(callback){
       fs.writeFileSync('gtfs/routes.txt', toCSV(_.values(routes))  );
       fs.writeFileSync('gtfs/stops.txt', toCSV(_.values(stops) ) );
-      fs.writeFileSync('gtfs/trips.txt', toCSV(_.values(trips)) );
+      fs.writeFileSync('gtfs/trips.txt', toCSV( trips ) );
       fs.writeFileSync('gtfs/stop_times.txt', toCSV(stoptimes) );
       fs.writeFileSync('gtfs/frequencies.txt', toCSV(frequencies) );
       // fs.writeFileSync('gtfs/shapes.txt', toCSV(shapes) );
       callback(null, 'four');
     }
 ]);
-  

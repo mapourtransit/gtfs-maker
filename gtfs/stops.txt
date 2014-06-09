@@ -132,3 +132,6 @@ stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,
 2889910719,92,undefined,undefined,40.6494457,16.6171579
 2889910722,91,undefined,undefined,40.6520267,16.6166187
 2890007851,235,undefined,undefined,40.655298,16.612973
+2899546406,60,undefined,undefined,40.6746775,16.5849523
+2899864497,186,undefined,undefined,40.643014,16.6221883
+2899864498,185,undefined,undefined,40.6445623,16.6221448
