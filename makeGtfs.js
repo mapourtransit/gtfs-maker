@@ -3,6 +3,7 @@ var async = require('async');
 var _ = require('lodash');
 var request = require('superagent');
 var uuid = require('uuid');
+var parseString = require('xml2js').parseString;
 
 var OSM3S_API = 'http://api.openstreetmap.fr/oapi/interpreter';
 var GPX_API = 'http://osmrm.openstreetmap.de/gpx.jsp?relation=';
@@ -17,6 +18,7 @@ var stops = {};
 var frequencies = [];
 var stoptimes = [];
 var shapes = [];
+var shapeIds = [];
 
 
 
@@ -86,6 +88,7 @@ function buildRoutesAndTrips(callback){
       _.each( relation.members, function(member){
         if (member.type == 'relation'){
           var shapeId = member.ref;
+          shapeIds.push(shapeId);
 
           _.each( ['W', 'NW', 'S-W'], function(serviceId){
             var tripId = uuid.v4();
@@ -139,7 +142,6 @@ function buildRoutes(callback){
             var time, results;
             results = _.filter(timetable[  routes[ trip['route_id'] ] ['route_short_name']   ],
             function(row){
-              debugger;
               return row.id == pole;
             });
             if ( results.length > 0 ){
@@ -169,14 +171,25 @@ function buildShapes(callback){
   // TODO get GPX from relation (tripId)
   // TODO add entries to shapes
 
-  _.each( _.values(trips), function(trip){
-    request.get(GPX_API + trip['shape_id'])
+  async.each( _.values(shapeIds), function(id, cb){
+    console.log(id);
+    request.get(GPX_API + id)
         .end(function(response){
-          // console.log(response);
+           parseString(response.text, function (err, result) {
+             var points;
+             if ( err ){
+               console.error('parseString', err);
+             } else {
+               points = result.gpx.rte[0].rtept;
+               _.each( points, function(point, index){
+                 var row = [id , point.$.lat, point.$.lon, index];
+                 shapes.push(row);
+               });
+             }
+             cb(null);
+           });
         });
-  });
-
-  callback(null, 'four');
+  }, callback);
 }
 
 function toCSV(objArray) {
@@ -192,7 +205,7 @@ function toCSV(objArray) {
   for (var i = 0; i < array.length; i++) {
     var line = '';
     for (var index in array[i]) {
-      if (line != '') line += ','
+      if (line !== '') line += ',';
 
         line += array[i][index];
     }
@@ -204,17 +217,17 @@ function toCSV(objArray) {
 }
 
 async.series([
-    buildStops,
+    //buildStops,
     buildRoutesAndTrips,
-    buildRoutes,
+    //buildRoutes,
     buildShapes,
     function print(callback){
-      fs.writeFileSync('gtfs/routes.txt', toCSV(_.values(routes))  );
-      fs.writeFileSync('gtfs/stops.txt', toCSV(_.values(stops) ) );
-      fs.writeFileSync('gtfs/trips.txt', toCSV( trips ) );
-      fs.writeFileSync('gtfs/stop_times.txt', toCSV(stoptimes) );
-      fs.writeFileSync('gtfs/frequencies.txt', toCSV(frequencies) );
-      // fs.writeFileSync('gtfs/shapes.txt', toCSV(shapes) );
+      //fs.writeFileSync('gtfs/routes.txt', toCSV(_.values(routes))  );
+      //fs.writeFileSync('gtfs/stops.txt', toCSV(_.values(stops) ) );
+      //fs.writeFileSync('gtfs/trips.txt', toCSV( trips ) );
+      //fs.writeFileSync('gtfs/stop_times.txt', toCSV(stoptimes) );
+      //fs.writeFileSync('gtfs/frequencies.txt', toCSV(frequencies) );
+      fs.writeFileSync('gtfs/shapes.txt', toCSV(shapes) );
       callback(null, 'four');
     }
 ]);
