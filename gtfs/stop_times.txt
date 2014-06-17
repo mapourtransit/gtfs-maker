@@ -1,4 +1,4 @@
-trip_id,arrival_time,departure_time,stop_id,stop_sequence,
+trip_id,arrival_time,departure_time,stop_id,stop_sequence
 bef4d2ba-fa87-49d7-be4a-9a38f197c242,6:50,6:50,2513695158,1
 32121737-b7fe-4c6b-a8a1-b16d3ace9a28,6:50,6:50,2513695158,1
 5c050352-764c-4ac7-b69e-5b3f36813b5f,6:50,6:50,2513695158,1

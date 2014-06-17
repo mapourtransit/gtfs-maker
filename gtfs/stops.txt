@@ -1,4 +1,4 @@
-stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon
 2508265045,46,undefined,undefined,40.6677915,16.6051401
 2508265047,45,undefined,undefined,40.6659185,16.6052101
 2509490266,180,Via della Scienza,undefined,40.6825232,16.5861427

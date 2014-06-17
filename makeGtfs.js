@@ -11,6 +11,8 @@ var GPX_API = 'http://osmrm.openstreetmap.de/gpx.jsp?relation=';
 var mastersQuery = fs.readFileSync('queries/get-master-routes.osm3s').toString();
 var stopsQuery = fs.readFileSync('queries/get-stops-nodes.osm3s').toString();
 var routesQuery = fs.readFileSync('queries/get-routes-rel.osm3s').toString();
+var waysQuery = fs.readFileSync('queries/get-routes-ways.osm3s').toString();
+var nodesQuery = fs.readFileSync('queries/get-routes-nodes.osm3s').toString();
 
 var routes = {};
 var trips = [];

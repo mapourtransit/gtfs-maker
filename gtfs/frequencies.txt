@@ -1,4 +1,4 @@
-trip_id,start_time,end_time,headway_secs,exact_times,
+trip_id,start_time,end_time,headway_secs,exact_times
 781c2c8d-b865-4fce-9a60-247c0844e682,__START_TIME__,__END_TIME__,__60__,1
 5db1e021-be95-487b-b9e2-33c6695a95d2,__START_TIME__,__END_TIME__,__60__,1
 3c842038-23b3-46d5-a732-67047e763421,__START_TIME__,__END_TIME__,__60__,1

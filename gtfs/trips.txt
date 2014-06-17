@@ -1,4 +1,4 @@
-trip_id,route_id,shape_id,service_id,
+trip_id,route_id,shape_id,service_id
 781c2c8d-b865-4fce-9a60-247c0844e682,3652883,3652882,W
 5db1e021-be95-487b-b9e2-33c6695a95d2,3652883,3652882,NW
 3c842038-23b3-46d5-a732-67047e763421,3652883,3652882,S-W
