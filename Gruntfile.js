@@ -55,28 +55,34 @@ module.exports = function(grunt){
 
   });
 
-  grunt.registerTask('shapes', function(){
+  function loadData(list){
+    return list.map(function(type){
+      return JSON.parse(fs.readFileSync('./cache/' + type + '.json').toString());
+    });
+  }
 
-    var shapeBuilder = require('./shapeBuilder');
-
-    function loadData(){
-      return ['routes', 'ways', 'nodes'].map(function(type){
-        return JSON.parse(fs.readFileSync('./cache/' + type + '.json').toString());
-      });
-    }
-
-    /*
-     * write GTFS header and data
-     */
-    var csvHeader = "shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence\n";
-
-    var shapes = shapeBuilder(loadData());
-
-    var csvData = shapes.map(function(row){
+  function toCSV(records){
+    return records.map(function(row){
       return row.join(',');
     }).join("\n");
+  }
 
-    fs.writeFileSync('./gtfs/shapes.txt', csvHeader + csvData);
+
+  grunt.registerTask('shapes', function(){
+
+    var shapeBuilder = require('./builders/shapes');
+    var csvHeader = "shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence\n";
+    var shapes = shapeBuilder(loadData(['routes', 'ways', 'nodes']));
+    fs.writeFileSync('./gtfs/shapes.txt', csvHeader + toCSV(shapes));
+
+  });
+
+  grunt.registerTask('stops', function(){
+
+    var stopBuilder = require('./builders/stops');
+    var csvHeader = "stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon\n";
+    var stops = shapeBuilder(loadData(['stops']));
+    fs.writeFileSync('./gtfs/stops.txt', csvHeader + toCSV(stops));
 
   });
 

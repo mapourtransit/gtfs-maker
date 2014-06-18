@@ -189,7 +189,6 @@ async.series([
     buildRoutes,
     function print(callback){
       fs.writeFileSync('gtfs/routes.txt', toCSV(_.values(routes))  );
-      fs.writeFileSync('gtfs/stops.txt', toCSV(_.values(stops) ) );
       fs.writeFileSync('gtfs/trips.txt', toCSV( trips ) );
       fs.writeFileSync('gtfs/stop_times.txt', toCSV(stoptimes) );
       fs.writeFileSync('gtfs/frequencies.txt', toCSV(frequencies) );
