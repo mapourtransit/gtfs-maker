@@ -10,11 +10,13 @@ module.exports = function(grunt){
 
     var done = this.async();
 
+    var mastersQuery = fs.readFileSync('queries/get-master-routes.osm3s').toString();
+    var stopsQuery = fs.readFileSync('queries/get-stops-nodes.osm3s').toString();
     var routesQuery = fs.readFileSync('queries/get-routes-rel.osm3s').toString();
     var waysQuery = fs.readFileSync('queries/get-routes-ways.osm3s').toString();
     var nodesQuery = fs.readFileSync('queries/get-routes-nodes.osm3s').toString();
 
-    var queries = [routesQuery, waysQuery, nodesQuery];
+    var queries = [mastersQuery, stopsQuery, routesQuery, waysQuery, nodesQuery];
 
     /*
      * gets data from OSM Overpass API
@@ -37,7 +39,7 @@ module.exports = function(grunt){
      * array of arrays with [routes, ways, nodes]
      */
     function saveData(data){
-      var types = ['routes', 'ways', 'nodes'];
+      var types = ['masters', 'stops', 'routes', 'ways', 'nodes'];
       _.each(data, function(arr, index){
         fs.writeFileSync('./cache/' + types[index] + '.json', JSON.stringify(arr));
       });
@@ -67,21 +69,20 @@ module.exports = function(grunt){
     }).join("\n");
   }
 
-
   grunt.registerTask('shapes', function(){
 
-    var shapeBuilder = require('./builders/shapes');
+    var shapesBuilder = require('./builders/shapes');
     var csvHeader = "shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence\n";
-    var shapes = shapeBuilder(loadData(['routes', 'ways', 'nodes']));
+    var shapes = shapesBuilder(loadData(['routes', 'ways', 'nodes']));
     fs.writeFileSync('./gtfs/shapes.txt', csvHeader + toCSV(shapes));
 
   });
 
   grunt.registerTask('stops', function(){
 
-    var stopBuilder = require('./builders/stops');
+    var stopsBuilder = require('./builders/stops');
     var csvHeader = "stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon\n";
-    var stops = shapeBuilder(loadData(['stops']));
+    var stops = stopsBuilder(loadData(['stops']));
     fs.writeFileSync('./gtfs/stops.txt', csvHeader + toCSV(stops));
 
   });
