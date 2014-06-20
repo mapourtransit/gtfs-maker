@@ -32,10 +32,11 @@ module.exports = function(data){
     // nest ways ordering nodes properly
     var nested = ways.map(function(way){
       var nodes = lookup.ways[way.ref].nodes;
+      // always return clone!
       if(way.role === 'forward'){
-        return nodes;
+        return _.clone(nodes);
       } else if(way.role === 'backward') {
-        return nodes.reverse();
+        return _.clone(nodes).reverse();
       } else {
         console.log('unexpected role!', way);
       }
