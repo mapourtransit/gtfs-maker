@@ -44,10 +44,16 @@ module.exports = function(data){
     var path = [];
     _.each(nested, function(nodeIds, index){
       _.each(nodeIds, function(id){
-        // check got crossings half the way!
+        if(index == nested.length - 1) {
+        // handle last segment
         // #FIXME support case when last stop happens in the middle of the way!
-        if(index != nested.length - 1 && id === nested[index+1][0].id) return;
-        path.push(id);
+          path.push(id);
+        } else if(id === nested[index+1][0]){
+          // don't add since road changes half the way eg. roundabouts
+          // first element of next way will get included instead
+        } else {
+          path.push(id);
+        }
       });
     });
 
