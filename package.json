@@ -16,5 +16,19 @@
     "uuid": "^1.4.1",
     "es6-promise": "~1.0.0",
     "grunt": "~0.4.5"
+  },
+  "conf": {
+    "winter":{
+      "start_date":"20140901",
+      "end_date":"20140630"
+    },
+    "summer":{
+      "start_date":"20140701",
+      "end_date":"20140831"
+    },
+    "year":{
+      "start_date":"20140101",
+      "end_date":"20141231"
+    }
   }
 }
