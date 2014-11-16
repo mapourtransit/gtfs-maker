@@ -143,13 +143,14 @@ module.exports = function(grunt){
 
   grunt.registerTask('frequencies', function(){
 
-
+    var frequenciesBuilder = require('./builders/frequencies');
+    var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
+    var frequencies = frequenciesBuilder( loadData(['masters', 'routes']), loadGtfs(['calendar']) );
+    fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
 
   });
 
   grunt.registerTask('trips', function(){
-
-    // TODO make this task dependant on calendar task
 
     var tripsBuilder = require('./builders/trips');
     var csvHeader = "route_id,service_id,trip_id,trip_headsign,direction_id,shape_id\n";
