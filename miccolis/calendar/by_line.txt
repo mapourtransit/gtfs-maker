@@ -1,4 +1,4 @@
-line_number,service_id,start_date,end_date
+line_number,service_id,start_date,end_date,start_time,end_time
 1,WW,20140901,20140630,6:20,21:20
 1,SW,20140701,20140831,6:20,13:20
 1,SW,20140701,20140831,15:20,21:20
