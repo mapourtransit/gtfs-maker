@@ -25,6 +25,26 @@ module.exports = function(data, calendar){
         // eg via Fermi -> via Frangione
         // and back via Frangione -> via Fermi
         // we need to compute return trip times
+
+        // TODO how to get orders?
+
+        frequencies.push([
+          tripId, // trip_id,
+          service['start_time'], // start_time,
+          service['end_time'], // end_time,
+          3600, // headway_secs 60 secs
+          1 // exact_times
+        ]);
+
+        // and back
+        frequencies.push([
+          tripId, // trip_id,
+          service['r_start_time'], // start_time,
+          service['r_end_time'], // end_time,
+          3600, // headway_secs 60 secs
+          1 // exact_times
+        ]);
+
         master.members.forEach(function(member){
           var route = lookup.routes[member.ref];
           var tripId = master.id

@@ -1,6 +1,6 @@
-line_id,service_id,start_date,end_date,start_time,end_time
-1,WW,20140901,20140630,6:20,21:20
-1,SW,20140701,20140831,6:20,13:20
+line_id,service_id,start_date,end_date,start_time,end_time,r_start_time,r_end_time
+1,WW,20140901,20140630,6:20,21:20,7:00,21:00
+1,SW,20140701,20140831,6:20,13:20,7:00,13:00
 1,SW,20140701,20140831,15:20,21:20
 2,WW,20140901,20140630,6:50,21:30
 2,SW,20140701,20140831,6:50,13:30
