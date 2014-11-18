@@ -99,6 +99,10 @@ module.exports = function(grunt){
     return table;
   }
 
+  function loadCalendar(){
+    return csvjson.toObject( './miccolis/calendar/by_line.txt' ).output;
+  }
+
   function toCSV(records){
     return records.map(function(row){
       return row.join(',');
@@ -145,7 +149,7 @@ module.exports = function(grunt){
 
     var frequenciesBuilder = require('./builders/frequencies');
     var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
-    var frequencies = frequenciesBuilder( loadData(['masters', 'routes']), loadGtfs(['calendar']) );
+    var frequencies = frequenciesBuilder( loadData(['masters', 'routes']), loadCalendar());
     fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
 
   });
