@@ -181,6 +181,7 @@ module.exports = function(grunt){
 
   });
 
-  grunt.registerTask('compile', ['cache'])
+  // NB: the order of task in important
+  grunt.registerTask('compile', ['cache', 'shapes', 'stops', 'calendar', 'calendar_dates', 'stop_times', 'routes', 'frequencies', 'trips'])
 
 };

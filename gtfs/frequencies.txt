@@ -9,7 +9,7 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3775826_WW_Via Fermi_Via Frangione,6:20,21:20,3600,1
 3775826_SW_Via Frangione_Via Fermi,7:00,13:00,3600,1
 3775826_SW_Via Fermi_Via Frangione,6:20,13:20,3600,1
-3775826_SW_Via Frangione_Via Fermi,00:00,00:00,3600,1
+3775826_SW_Via Frangione_Via Fermi,16:00,21:50,3600,1
 3775826_SW_Via Fermi_Via Frangione,15:20,21:20,3600,1
 3776282_WW_Ospedale_Piazza Matteotti,00:00,00:00,3600,1
 3776282_WW_Piazza Matteotti_Ospedale,00:00,00:00,3600,1
