@@ -23,7 +23,7 @@ module.exports = function(data, gtfs, timetables){
     masters.forEach( function(master){
 
       // fetch timetable for this line
-      var timetable = timetables[ master.tags.ref ];
+      var timetable = timetables[ master.tags.ref.replace('/', '') ];
 
       master.members.forEach(function(member){
         var route = lookup.routes[member.ref];
@@ -40,21 +40,22 @@ module.exports = function(data, gtfs, timetables){
                 console.error('stop not found: ' + member.ref + ' in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
-              if (!stop.tags || !stop.tags.ref){
-                console.error('stop ' + member.ref + ' does not have tags.ref in route ' + route.id + ' (' + master.tags.name + ')');
+              var code = stop.tags.ref || stop.tags.rel;
+              if (!code){
+                console.error('stop ' + member.ref + ' does not have tags.ref or tag.rel (deprecated) in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
               // fetch the first row where stop.ref matches pole number
               var row = _.findWhere( timetable,{
-                'id':stop.tags.ref
+                'id':code
               });
               if (!row){
-                console.error('no entry in timetable for stop "' + stop.tags.ref + '" in route ' + route.id + ' (' + master.tags.name + ')');
+                console.error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
               var time = row['time'];
               if (!time){
-                console.error('no arrival or departure time for stop "' + stop.tags.ref + '" in route ' + route.id + ' (' + master.tags.name + ')');
+                console.error('no arrival or departure time for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
               stoptimes.push([
