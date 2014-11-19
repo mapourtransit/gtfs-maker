@@ -149,7 +149,7 @@ module.exports = function(grunt){
 
     var frequenciesBuilder = require('./builders/frequencies');
     var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
-    var frequencies = frequenciesBuilder( loadData(['masters', 'routes']), loadCalendar());
+    var frequencies = frequenciesBuilder( loadData(['masters', 'routes']), loadTimetables(), loadCalendar());
     fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
 
   });
@@ -180,5 +180,7 @@ module.exports = function(grunt){
     fs.writeFileSync('./gtfs/calendar_dates.txt', csvHeader + toCSV(calendarDates));
 
   });
+
+  grunt.registerTask('compile', ['cache'])
 
 };

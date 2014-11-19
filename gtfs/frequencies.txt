@@ -5,11 +5,11 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3652883_SW_Via Della Quercia_Via Fermi,00:00,00:00,3600,1
 3652883_NW_Via Fermi_Via Della Quercia,00:00,00:00,3600,1
 3652883_NW_Via Della Quercia_Via Fermi,00:00,00:00,3600,1
-3775826_WW_Via Frangione_Via Fermi,6:20,21:20,3600,1
+3775826_WW_Via Frangione_Via Fermi,7:00,21:00,3600,1
 3775826_WW_Via Fermi_Via Frangione,6:20,21:20,3600,1
-3775826_SW_Via Frangione_Via Fermi,6:20,13:20,3600,1
+3775826_SW_Via Frangione_Via Fermi,7:00,13:00,3600,1
 3775826_SW_Via Fermi_Via Frangione,6:20,13:20,3600,1
-3775826_SW_Via Frangione_Via Fermi,15:20,21:20,3600,1
+3775826_SW_Via Frangione_Via Fermi,00:00,00:00,3600,1
 3775826_SW_Via Fermi_Via Frangione,15:20,21:20,3600,1
 3776282_WW_Ospedale_Piazza Matteotti,00:00,00:00,3600,1
 3776282_WW_Piazza Matteotti_Ospedale,00:00,00:00,3600,1
@@ -29,21 +29,21 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3776284_SW_Timmari_Piazza Matteotti,00:00,00:00,3600,1
 3776284_NW_Piazza Matteotti_Timmari,00:00,00:00,3600,1
 3776284_NW_Timmari_Piazza Matteotti,00:00,00:00,3600,1
-3776285_WW_via Frangione_Via Fermi,6:50,21:30,3600,1
+3776285_WW_via Frangione_Via Fermi,00:00,00:00,3600,1
 3776285_WW_Via Fermi_Via Frangione,6:50,21:30,3600,1
-3776285_WW_Via Frangione_Via Fermi,6:50,21:30,3600,1
-3776285_SW_via Frangione_Via Fermi,6:50,13:30,3600,1
+3776285_WW_Via Frangione_Via Fermi,00:00,00:00,3600,1
+3776285_SW_via Frangione_Via Fermi,00:00,00:00,3600,1
 3776285_SW_Via Fermi_Via Frangione,6:50,13:30,3600,1
-3776285_SW_Via Frangione_Via Fermi,6:50,13:30,3600,1
-3776285_SW_via Frangione_Via Fermi,15:50,21:30,3600,1
+3776285_SW_Via Frangione_Via Fermi,00:00,00:00,3600,1
+3776285_SW_via Frangione_Via Fermi,00:00,00:00,3600,1
 3776285_SW_Via Fermi_Via Frangione,15:50,21:30,3600,1
-3776285_SW_Via Frangione_Via Fermi,15:50,21:30,3600,1
-3776285_NW_via Frangione_Via Fermi,7:50,13:30,3600,1
+3776285_SW_Via Frangione_Via Fermi,00:00,00:00,3600,1
+3776285_NW_via Frangione_Via Fermi,00:00,00:00,3600,1
 3776285_NW_Via Fermi_Via Frangione,7:50,13:30,3600,1
-3776285_NW_Via Frangione_Via Fermi,7:50,13:30,3600,1
-3776285_NW_via Frangione_Via Fermi,15:50,21:30,3600,1
+3776285_NW_Via Frangione_Via Fermi,00:00,00:00,3600,1
+3776285_NW_via Frangione_Via Fermi,00:00,00:00,3600,1
 3776285_NW_Via Fermi_Via Frangione,15:50,21:30,3600,1
-3776285_NW_Via Frangione_Via Fermi,15:50,21:30,3600,1
+3776285_NW_Via Frangione_Via Fermi,00:00,00:00,3600,1
 3776286_WW_Via Fermi_Via Della Quercia,7:04,21:40,3600,1
 3776286_WW_Vie Della Quercia_Via Fermi,7:04,21:40,3600,1
 3776286_SW_Via Fermi_Via Della Quercia,7:04,13:40,3600,1
