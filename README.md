@@ -40,6 +40,16 @@ Per generare una nuova versione di file GTFS prendendo dati aggiornati da OpenSt
 
 Il risultato del comando è visibile nella directory gtfs.
 
+Se alcune informazioni sono mancanti su OSM, lo script lo segnala. In questo modo possiamo aiutare la comunità di OpenStreetMap a capire dove è necessario intervenire. Ad esempio,
+
+    stop 2509490275 does not have tags.ref in route 3797255 (Linea 6/B)
+
+Significa che la fermata OSM con id 2509490275 non ha il tag tags.ref (i.e. il  numero di palo nella convenzione che abbiamo seguito). Inoltre indica il numero della relazione di tipo route di cui fa parte la fermata.
+
+## Problemi ##
+
+TODO elenco dei problemi che abbiamo al momento per generare i gtfs.
+
 ## Demo ##
 
 TODO
