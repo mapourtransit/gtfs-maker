@@ -194,6 +194,6 @@ module.exports = function(grunt){
   // NB: the order of task in important
   grunt.registerTask('compile', ['cache', 'shapes', 'stops', 'calendar', 'calendar_dates', 'stop_times', 'routes', 'frequencies', 'trips'])
 
-  grunt.registerTask('validate', ['grunt:validate']);
+  grunt.registerTask('validate', ['exec:validate']);
 
 };

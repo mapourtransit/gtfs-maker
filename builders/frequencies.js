@@ -54,9 +54,10 @@ module.exports = function(data, timetables, calendar){
           var tripId = master.id
                        + '_' + service['service_id']
                        + '_' + route.tags.from
-                       + '_' + route.tags.to;
+                       + '_' + route.tags.to
+                       + '_' + member.ref;
 
-          if ( isReturnTrip(timetable, route.tags.from, route.tags.to)  ){ 
+          if ( isReturnTrip(timetable, route.tags.from, route.tags.to)  ){
             frequencies.push([
               tripId, // trip_id,
               service['r_start_time'], // start_time,

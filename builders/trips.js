@@ -18,6 +18,11 @@ module.exports = function(data, gtfs){
   var trips = [];
 
   masters.forEach( function(master){
+
+    if ( master.id == 3776289 ){
+
+    }
+
     calendar.forEach( function(service){
 
       master.members.forEach(function(member){
@@ -25,7 +30,8 @@ module.exports = function(data, gtfs){
         var tripId = master.id
                      + '_' + service['service_id']
                      + '_' + route.tags.from
-                     + '_' + route.tags.to;
+                     + '_' + route.tags.to
+                     + '_' + member.ref;
         trips.push([
           master.id, // route_id
           service['service_id'], // service_id

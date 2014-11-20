@@ -30,7 +30,8 @@ module.exports = function(data, gtfs, timetables){
         var tripId = master.id
                      + '_' + service['service_id']
                      + '_' + route.tags.from
-                     + '_' + route.tags.to;
+                     + '_' + route.tags.to
+                     + '_' + member.ref;
         var index = 0;
         route.members.forEach(function(member){
           if (member.type == 'node' ){
