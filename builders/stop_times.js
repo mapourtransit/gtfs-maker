@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var moment = require('moment');
 
 module.exports = function(data, gtfs, timetables){
 
@@ -32,7 +33,7 @@ module.exports = function(data, gtfs, timetables){
                      + '_' + route.tags.from
                      + '_' + route.tags.to
                      + '_' + member.ref;
-        var index = 0;
+        var index = 0, lastTime = moment("00:00", "HH:mm");
         route.members.forEach(function(member){
           if (member.type == 'node' ){
             if (member.role && member.role == 'platform'){
@@ -47,14 +48,17 @@ module.exports = function(data, gtfs, timetables){
                 return;
               }
               // fetch the first row where stop.ref matches pole number
-              var row = _.findWhere( timetable,{
-                'id':code
+              var rows = _.filter( timetable, function(row){
+                var time = row['time'];
+                if (!time) return false;
+                return row.id == code && moment(time, "HH:mm").isAfter(lastTime);
               });
-              if (!row){
+              if (rows.length == 0){
                 console.error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
-              var time = row['time'];
+              // get the first time
+              var time = rows[0]['time'];
               if (!time){
                 console.error('no arrival or departure time for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 time = '00:00' // add placeholder
@@ -67,6 +71,7 @@ module.exports = function(data, gtfs, timetables){
                 stop.id, // stop_id
                 index++ // stop_sequence
               ]);
+              lastTime = moment(time, "HH:mm");
             }
           }
         });
