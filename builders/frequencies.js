@@ -59,7 +59,7 @@ module.exports = function(data, timetables, calendar){
 
           // TODO these routes do not have stoptimes
           // quick hack to avoid generating validation errors
-          if ( _.contains([3790877, 3776269, 3776265], member.ref)){
+          if ( _.contains([3790877, 3776269, 3776265, 3776274], member.ref)){
             console.log('skip ' + member.ref);
             return;
           }
