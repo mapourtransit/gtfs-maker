@@ -54,7 +54,7 @@ module.exports = function(data, gtfs, timetables){
                 console.error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
               }
-              var time = row['time'];
+              var time = row['time'] + ':00';
               if (!time){
                 console.error('no arrival or departure time for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
                 return;
