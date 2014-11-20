@@ -31,7 +31,6 @@ module.exports = function(data, gtfs){
           service['service_id'], // service_id
           tripId, // trip_id
           route.tags.to, // trip_headsign
-          route.tags.direction, // direction_id TODO missing in OSM
           route.id // shape_id
         ]);
       });

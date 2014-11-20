@@ -7,6 +7,16 @@ var conf = require('./package.json').conf;
 
 module.exports = function(grunt){
 
+  grunt.loadNpmTasks('grunt-exec');
+
+  grunt.initConfig({
+    exec: {
+      validate: {
+        command: 'python ./utils/transitfeed/feedvalidator.py gtfs/'
+      }
+    }
+  });
+
   grunt.registerTask('cache', function(){
     var OSM3S_API = 'http://api.openstreetmap.fr/oapi/interpreter';
 
@@ -157,7 +167,7 @@ module.exports = function(grunt){
   grunt.registerTask('trips', function(){
 
     var tripsBuilder = require('./builders/trips');
-    var csvHeader = "route_id,service_id,trip_id,trip_headsign,direction_id,shape_id\n";
+    var csvHeader = "route_id,service_id,trip_id,trip_headsign,shape_id\n";
     var trips = tripsBuilder( loadData(['masters', 'routes']), loadGtfs(['calendar']) );
     fs.writeFileSync('./gtfs/trips.txt', csvHeader + toCSV(trips));
 
@@ -166,7 +176,7 @@ module.exports = function(grunt){
   grunt.registerTask('calendar', function(){
 
     var calendarBuilder = require('./builders/calendar');
-    var csvHeader = "service_id,monday,tuesday,wednesday,thursday,saturday,sunday,start_date,end_date\n";
+    var csvHeader = "service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date\n";
     var calendar = calendarBuilder( conf );
     fs.writeFileSync('./gtfs/calendar.txt', csvHeader + toCSV(calendar));
 
@@ -183,5 +193,7 @@ module.exports = function(grunt){
 
   // NB: the order of task in important
   grunt.registerTask('compile', ['cache', 'shapes', 'stops', 'calendar', 'calendar_dates', 'stop_times', 'routes', 'frequencies', 'trips'])
+
+  grunt.registerTask('validate', ['grunt:validate']);
 
 };

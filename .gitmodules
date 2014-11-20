@@ -1,0 +1,3 @@
+[submodule "utils/transitfeed"]
+	path = utils/transitfeed
+	url = https://github.com/google/transitfeed

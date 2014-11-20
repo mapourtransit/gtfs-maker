@@ -46,9 +46,22 @@ Se alcune informazioni sono mancanti su OSM, lo script lo segnala. In questo mod
 
 Significa che la fermata OSM con id 2509490275 non ha il tag tags.ref (i.e. il  numero di palo nella convenzione che abbiamo seguito). Inoltre indica il numero della relazione di tipo route di cui fa parte la fermata.
 
+## Valida i file gtfs generati ##
+
+Lo script include un validatore per gtfs chiamato [FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator).
+Questo programma richiede Python 2.7.
+
+Per lanciare FeedValidator sul dataset appena creato:
+
+    $ grunt validate
+
+Viene generato un file validation-results.html che mostra i problemi attuali del gtfs generato.
+
 ## Problemi ##
 
 TODO elenco dei problemi che abbiamo al momento per generare i gtfs.
+
+* qualità gtfs validation-results.html
 
 ## Demo ##
 
@@ -57,6 +70,8 @@ TODO
 ## Risorse utili ##
 
 [Orari Miccolis](https://docs.google.com/spreadsheets/d/1A328lZSG3Y9uSz8uSy2FNkstqgOhokbtgcCVSIB4a5o/edit#gid=234488140)
+
+[FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator) by Google
 
 ## Licenza ##
 

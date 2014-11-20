@@ -1,100 +1,100 @@
-route_id,service_id,trip_id,trip_headsign,direction_id,shape_id
-3652883,WW,3652883_WW_Via Fermi_Via Della Quercia,Via Della Quercia,,3652882
-3652883,WW,3652883_WW_Via Della Quercia_Via Fermi,Via Fermi,,3790270
-3652883,SW,3652883_SW_Via Fermi_Via Della Quercia,Via Della Quercia,,3652882
-3652883,SW,3652883_SW_Via Della Quercia_Via Fermi,Via Fermi,,3790270
-3652883,NW,3652883_NW_Via Fermi_Via Della Quercia,Via Della Quercia,,3652882
-3652883,NW,3652883_NW_Via Della Quercia_Via Fermi,Via Fermi,,3790270
-3775826,WW,3775826_WW_Via Frangione_Via Fermi,Via Fermi,,3302783
-3775826,WW,3775826_WW_Via Fermi_Via Frangione,Via Frangione,,3303207
-3775826,SW,3775826_SW_Via Frangione_Via Fermi,Via Fermi,,3302783
-3775826,SW,3775826_SW_Via Fermi_Via Frangione,Via Frangione,,3303207
-3775826,NW,3775826_NW_Via Frangione_Via Fermi,Via Fermi,,3302783
-3775826,NW,3775826_NW_Via Fermi_Via Frangione,Via Frangione,,3303207
-3776282,WW,3776282_WW_Ospedale_Piazza Matteotti,Piazza Matteotti,Piazza Matteotti,3770093
-3776282,WW,3776282_WW_Piazza Matteotti_Ospedale,Ospedale,Ospedale,3784123
-3776282,SW,3776282_SW_Ospedale_Piazza Matteotti,Piazza Matteotti,Piazza Matteotti,3770093
-3776282,SW,3776282_SW_Piazza Matteotti_Ospedale,Ospedale,Ospedale,3784123
-3776282,NW,3776282_NW_Ospedale_Piazza Matteotti,Piazza Matteotti,Piazza Matteotti,3770093
-3776282,NW,3776282_NW_Piazza Matteotti_Ospedale,Ospedale,Ospedale,3784123
-3776283,WW,3776283_WW_Piazza Matteotti_Via Arno,Via Arno,,3769799
-3776283,WW,3776283_WW_Via Arno_Piazza Matteotti,Piazza Matteotti,,3790876
-3776283,SW,3776283_SW_Piazza Matteotti_Via Arno,Via Arno,,3769799
-3776283,SW,3776283_SW_Via Arno_Piazza Matteotti,Piazza Matteotti,,3790876
-3776283,NW,3776283_NW_Piazza Matteotti_Via Arno,Via Arno,,3769799
-3776283,NW,3776283_NW_Via Arno_Piazza Matteotti,Piazza Matteotti,,3790876
-3776284,WW,3776284_WW_Piazza Matteotti_Timmari,Timmari,,3790877
-3776284,WW,3776284_WW_Timmari_Piazza Matteotti,Piazza Matteotti,,3790878
-3776284,SW,3776284_SW_Piazza Matteotti_Timmari,Timmari,,3790877
-3776284,SW,3776284_SW_Timmari_Piazza Matteotti,Piazza Matteotti,,3790878
-3776284,NW,3776284_NW_Piazza Matteotti_Timmari,Timmari,,3790877
-3776284,NW,3776284_NW_Timmari_Piazza Matteotti,Piazza Matteotti,,3790878
-3776285,WW,3776285_WW_via Frangione_Via Fermi,Via Fermi,,3767630
-3776285,WW,3776285_WW_Via Fermi_Via Frangione,Via Frangione,,3796928
-3776285,WW,3776285_WW_Via Frangione_Via Fermi,Via Fermi,,3796929
-3776285,SW,3776285_SW_via Frangione_Via Fermi,Via Fermi,,3767630
-3776285,SW,3776285_SW_Via Fermi_Via Frangione,Via Frangione,,3796928
-3776285,SW,3776285_SW_Via Frangione_Via Fermi,Via Fermi,,3796929
-3776285,NW,3776285_NW_via Frangione_Via Fermi,Via Fermi,,3767630
-3776285,NW,3776285_NW_Via Fermi_Via Frangione,Via Frangione,,3796928
-3776285,NW,3776285_NW_Via Frangione_Via Fermi,Via Fermi,,3796929
-3776286,WW,3776286_WW_Via Fermi_Via Della Quercia,Via Della Quercia,,3770563
-3776286,WW,3776286_WW_Vie Della Quercia_Via Fermi,Via Fermi,,3790880
-3776286,SW,3776286_SW_Via Fermi_Via Della Quercia,Via Della Quercia,,3770563
-3776286,SW,3776286_SW_Vie Della Quercia_Via Fermi,Via Fermi,,3790880
-3776286,NW,3776286_NW_Via Fermi_Via Della Quercia,Via Della Quercia,,3770563
-3776286,NW,3776286_NW_Vie Della Quercia_Via Fermi,Via Fermi,,3790880
-3776287,WW,3776287_WW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776273
-3776287,WW,3776287_WW_Piazza Matteotti_Cimitero,Cimitero,,3776274
-3776287,SW,3776287_SW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776273
-3776287,SW,3776287_SW_Piazza Matteotti_Cimitero,Cimitero,,3776274
-3776287,NW,3776287_NW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776273
-3776287,NW,3776287_NW_Piazza Matteotti_Cimitero,Cimitero,,3776274
-3776288,WW,3776288_WW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3776276
-3776288,WW,3776288_WW_Via Dante_Via dei Pesci,Via dei Pesci,,3776275
-3776288,SW,3776288_SW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3776276
-3776288,SW,3776288_SW_Via Dante_Via dei Pesci,Via dei Pesci,,3776275
-3776288,NW,3776288_NW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3776276
-3776288,NW,3776288_NW_Via Dante_Via dei Pesci,Via dei Pesci,,3776275
-3776289,WW,3776289_WW_Via Sinni_Via Frangione,Via Frangione,,3776271
-3776289,WW,3776289_WW_Via Sinni_Via Frangione,Via Frangione,,3776272
-3776289,SW,3776289_SW_Via Sinni_Via Frangione,Via Frangione,,3776271
-3776289,SW,3776289_SW_Via Sinni_Via Frangione,Via Frangione,,3776272
-3776289,NW,3776289_NW_Via Sinni_Via Frangione,Via Frangione,,3776271
-3776289,NW,3776289_NW_Via Sinni_Via Frangione,Via Frangione,,3776272
-3776290,WW,3776290_WW_via Dante_via della Quercia,via della Quercia,,3776267
-3776290,WW,3776290_WW_via della Quercia_via Dante,via Dante,,3776268
-3776290,SW,3776290_SW_via Dante_via della Quercia,via della Quercia,,3776267
-3776290,SW,3776290_SW_via della Quercia_via Dante,via Dante,,3776268
-3776290,NW,3776290_NW_via Dante_via della Quercia,via della Quercia,,3776267
-3776290,NW,3776290_NW_via della Quercia_via Dante,via Dante,,3776268
-3776291,WW,3776291_WW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776269
-3776291,WW,3776291_WW_Piazza Matteotti_Cimitero,Cimitero,,3776270
-3776291,SW,3776291_SW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776269
-3776291,SW,3776291_SW_Piazza Matteotti_Cimitero,Cimitero,,3776270
-3776291,NW,3776291_NW_Cimitero_Piazza Matteotti,Piazza Matteotti,,3776269
-3776291,NW,3776291_NW_Piazza Matteotti_Cimitero,Cimitero,,3776270
-3776292,WW,3776292_WW_Piazza S.Agnese_via Fermi,via Fermi,,3776281
-3776292,WW,3776292_WW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,,3784948
-3776292,SW,3776292_SW_Piazza S.Agnese_via Fermi,via Fermi,,3776281
-3776292,SW,3776292_SW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,,3784948
-3776292,NW,3776292_NW_Piazza S.Agnese_via Fermi,via Fermi,,3776281
-3776292,NW,3776292_NW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,,3784948
-3776293,WW,3776293_WW_Piazza Matteotti_via 1° maggio,via 1° maggio,,3776265
-3776293,WW,3776293_WW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,,3776266
-3776293,SW,3776293_SW_Piazza Matteotti_via 1° maggio,via 1° maggio,,3776265
-3776293,SW,3776293_SW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,,3776266
-3776293,NW,3776293_NW_Piazza Matteotti_via 1° maggio,via 1° maggio,,3776265
-3776293,NW,3776293_NW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,,3776266
-3776294,WW,3776294_WW_Via Dante_Via dei Pesci,Via dei Pesci,,3797252
-3776294,WW,3776294_WW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3797255
-3776294,SW,3776294_SW_Via Dante_Via dei Pesci,Via dei Pesci,,3797252
-3776294,SW,3776294_SW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3797255
-3776294,NW,3776294_NW_Via Dante_Via dei Pesci,Via dei Pesci,,3797252
-3776294,NW,3776294_NW_Via dei Pesci_Via dei Messapi,Via dei Messapi,,3797255
-3776295,WW,3776295_WW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,,3776280
-3776295,WW,3776295_WW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,,3776279
-3776295,SW,3776295_SW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,,3776280
-3776295,SW,3776295_SW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,,3776279
-3776295,NW,3776295_NW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,,3776280
-3776295,NW,3776295_NW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,,3776279
+route_id,service_id,trip_id,trip_headsign,shape_id
+3652883,WW,3652883_WW_Via Fermi_Via Della Quercia,Via Della Quercia,3652882
+3652883,WW,3652883_WW_Via Della Quercia_Via Fermi,Via Fermi,3790270
+3652883,SW,3652883_SW_Via Fermi_Via Della Quercia,Via Della Quercia,3652882
+3652883,SW,3652883_SW_Via Della Quercia_Via Fermi,Via Fermi,3790270
+3652883,NW,3652883_NW_Via Fermi_Via Della Quercia,Via Della Quercia,3652882
+3652883,NW,3652883_NW_Via Della Quercia_Via Fermi,Via Fermi,3790270
+3775826,WW,3775826_WW_Via Frangione_Via Fermi,Via Fermi,3302783
+3775826,WW,3775826_WW_Via Fermi_Via Frangione,Via Frangione,3303207
+3775826,SW,3775826_SW_Via Frangione_Via Fermi,Via Fermi,3302783
+3775826,SW,3775826_SW_Via Fermi_Via Frangione,Via Frangione,3303207
+3775826,NW,3775826_NW_Via Frangione_Via Fermi,Via Fermi,3302783
+3775826,NW,3775826_NW_Via Fermi_Via Frangione,Via Frangione,3303207
+3776282,WW,3776282_WW_Ospedale_Piazza Matteotti,Piazza Matteotti,3770093
+3776282,WW,3776282_WW_Piazza Matteotti_Ospedale,Ospedale,3784123
+3776282,SW,3776282_SW_Ospedale_Piazza Matteotti,Piazza Matteotti,3770093
+3776282,SW,3776282_SW_Piazza Matteotti_Ospedale,Ospedale,3784123
+3776282,NW,3776282_NW_Ospedale_Piazza Matteotti,Piazza Matteotti,3770093
+3776282,NW,3776282_NW_Piazza Matteotti_Ospedale,Ospedale,3784123
+3776283,WW,3776283_WW_Piazza Matteotti_Via Arno,Via Arno,3769799
+3776283,WW,3776283_WW_Via Arno_Piazza Matteotti,Piazza Matteotti,3790876
+3776283,SW,3776283_SW_Piazza Matteotti_Via Arno,Via Arno,3769799
+3776283,SW,3776283_SW_Via Arno_Piazza Matteotti,Piazza Matteotti,3790876
+3776283,NW,3776283_NW_Piazza Matteotti_Via Arno,Via Arno,3769799
+3776283,NW,3776283_NW_Via Arno_Piazza Matteotti,Piazza Matteotti,3790876
+3776284,WW,3776284_WW_Piazza Matteotti_Timmari,Timmari,3790877
+3776284,WW,3776284_WW_Timmari_Piazza Matteotti,Piazza Matteotti,3790878
+3776284,SW,3776284_SW_Piazza Matteotti_Timmari,Timmari,3790877
+3776284,SW,3776284_SW_Timmari_Piazza Matteotti,Piazza Matteotti,3790878
+3776284,NW,3776284_NW_Piazza Matteotti_Timmari,Timmari,3790877
+3776284,NW,3776284_NW_Timmari_Piazza Matteotti,Piazza Matteotti,3790878
+3776285,WW,3776285_WW_via Frangione_Via Fermi,Via Fermi,3767630
+3776285,WW,3776285_WW_Via Fermi_Via Frangione,Via Frangione,3796928
+3776285,WW,3776285_WW_Via Frangione_Via Fermi,Via Fermi,3796929
+3776285,SW,3776285_SW_via Frangione_Via Fermi,Via Fermi,3767630
+3776285,SW,3776285_SW_Via Fermi_Via Frangione,Via Frangione,3796928
+3776285,SW,3776285_SW_Via Frangione_Via Fermi,Via Fermi,3796929
+3776285,NW,3776285_NW_via Frangione_Via Fermi,Via Fermi,3767630
+3776285,NW,3776285_NW_Via Fermi_Via Frangione,Via Frangione,3796928
+3776285,NW,3776285_NW_Via Frangione_Via Fermi,Via Fermi,3796929
+3776286,WW,3776286_WW_Via Fermi_Via Della Quercia,Via Della Quercia,3770563
+3776286,WW,3776286_WW_Vie Della Quercia_Via Fermi,Via Fermi,3790880
+3776286,SW,3776286_SW_Via Fermi_Via Della Quercia,Via Della Quercia,3770563
+3776286,SW,3776286_SW_Vie Della Quercia_Via Fermi,Via Fermi,3790880
+3776286,NW,3776286_NW_Via Fermi_Via Della Quercia,Via Della Quercia,3770563
+3776286,NW,3776286_NW_Vie Della Quercia_Via Fermi,Via Fermi,3790880
+3776287,WW,3776287_WW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776273
+3776287,WW,3776287_WW_Piazza Matteotti_Cimitero,Cimitero,3776274
+3776287,SW,3776287_SW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776273
+3776287,SW,3776287_SW_Piazza Matteotti_Cimitero,Cimitero,3776274
+3776287,NW,3776287_NW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776273
+3776287,NW,3776287_NW_Piazza Matteotti_Cimitero,Cimitero,3776274
+3776288,WW,3776288_WW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3776276
+3776288,WW,3776288_WW_Via Dante_Via dei Pesci,Via dei Pesci,3776275
+3776288,SW,3776288_SW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3776276
+3776288,SW,3776288_SW_Via Dante_Via dei Pesci,Via dei Pesci,3776275
+3776288,NW,3776288_NW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3776276
+3776288,NW,3776288_NW_Via Dante_Via dei Pesci,Via dei Pesci,3776275
+3776289,WW,3776289_WW_Via Sinni_Via Frangione,Via Frangione,3776271
+3776289,WW,3776289_WW_Via Sinni_Via Frangione,Via Frangione,3776272
+3776289,SW,3776289_SW_Via Sinni_Via Frangione,Via Frangione,3776271
+3776289,SW,3776289_SW_Via Sinni_Via Frangione,Via Frangione,3776272
+3776289,NW,3776289_NW_Via Sinni_Via Frangione,Via Frangione,3776271
+3776289,NW,3776289_NW_Via Sinni_Via Frangione,Via Frangione,3776272
+3776290,WW,3776290_WW_via Dante_via della Quercia,via della Quercia,3776267
+3776290,WW,3776290_WW_via della Quercia_via Dante,via Dante,3776268
+3776290,SW,3776290_SW_via Dante_via della Quercia,via della Quercia,3776267
+3776290,SW,3776290_SW_via della Quercia_via Dante,via Dante,3776268
+3776290,NW,3776290_NW_via Dante_via della Quercia,via della Quercia,3776267
+3776290,NW,3776290_NW_via della Quercia_via Dante,via Dante,3776268
+3776291,WW,3776291_WW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776269
+3776291,WW,3776291_WW_Piazza Matteotti_Cimitero,Cimitero,3776270
+3776291,SW,3776291_SW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776269
+3776291,SW,3776291_SW_Piazza Matteotti_Cimitero,Cimitero,3776270
+3776291,NW,3776291_NW_Cimitero_Piazza Matteotti,Piazza Matteotti,3776269
+3776291,NW,3776291_NW_Piazza Matteotti_Cimitero,Cimitero,3776270
+3776292,WW,3776292_WW_Piazza S.Agnese_via Fermi,via Fermi,3776281
+3776292,WW,3776292_WW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,3784948
+3776292,SW,3776292_SW_Piazza S.Agnese_via Fermi,via Fermi,3776281
+3776292,SW,3776292_SW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,3784948
+3776292,NW,3776292_NW_Piazza S.Agnese_via Fermi,via Fermi,3776281
+3776292,NW,3776292_NW_via Fermi_Piazza S.Agnese,Piazza S.Agnese,3784948
+3776293,WW,3776293_WW_Piazza Matteotti_via 1° maggio,via 1° maggio,3776265
+3776293,WW,3776293_WW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,3776266
+3776293,SW,3776293_SW_Piazza Matteotti_via 1° maggio,via 1° maggio,3776265
+3776293,SW,3776293_SW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,3776266
+3776293,NW,3776293_NW_Piazza Matteotti_via 1° maggio,via 1° maggio,3776265
+3776293,NW,3776293_NW_Via 1° maggio_Piazza Matteotti,Piazza Matteotti,3776266
+3776294,WW,3776294_WW_Via Dante_Via dei Pesci,Via dei Pesci,3797252
+3776294,WW,3776294_WW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3797255
+3776294,SW,3776294_SW_Via Dante_Via dei Pesci,Via dei Pesci,3797252
+3776294,SW,3776294_SW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3797255
+3776294,NW,3776294_NW_Via Dante_Via dei Pesci,Via dei Pesci,3797252
+3776294,NW,3776294_NW_Via dei Pesci_Via dei Messapi,Via dei Messapi,3797255
+3776295,WW,3776295_WW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,3776280
+3776295,WW,3776295_WW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,3776279
+3776295,SW,3776295_SW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,3776280
+3776295,SW,3776295_SW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,3776279
+3776295,NW,3776295_NW_Piazza Matteotti_Borgo Venusio,Borgo Venusio,3776280
+3776295,NW,3776295_NW_Borgo Venusio_Piazza Matteotti,Piazza Matteotti,3776279

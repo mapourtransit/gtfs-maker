@@ -9,3 +9,5 @@ gtfs/frequencies.txt
 gtfs/routes.txt
 gtfs/stop_times.txt
 gtfs/trips.txt
+
+validation-results.html
