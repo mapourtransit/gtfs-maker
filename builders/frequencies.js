@@ -57,6 +57,13 @@ module.exports = function(data, timetables, calendar){
                        + '_' + route.tags.to
                        + '_' + member.ref;
 
+          // TODO these routes do not have stoptimes
+          // quick hack to avoid generating validation errors
+          if ( _.contains([3790877, 3776269, 3776265], member.ref)){
+            console.log('skip ' + member.ref);
+            return;
+          }
+
           if ( isReturnTrip(timetable, route.tags.from, route.tags.to)  ){
             frequencies.push([
               tripId, // trip_id,

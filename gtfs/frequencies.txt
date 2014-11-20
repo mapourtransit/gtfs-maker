@@ -23,11 +23,8 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3776283_SW_Via Arno_Piazza Matteotti_3790876,01:01:00,23:59:00,3600,1
 3776283_NW_Piazza Matteotti_Via Arno_3769799,00:01:00,22:59:00,3600,1
 3776283_NW_Via Arno_Piazza Matteotti_3790876,01:01:00,23:59:00,3600,1
-3776284_WW_Piazza Matteotti_Timmari_3790877,00:01:00,22:59:00,3600,1
 3776284_WW_Timmari_Piazza Matteotti_3790878,01:01:00,23:59:00,3600,1
-3776284_SW_Piazza Matteotti_Timmari_3790877,00:01:00,22:59:00,3600,1
 3776284_SW_Timmari_Piazza Matteotti_3790878,01:01:00,23:59:00,3600,1
-3776284_NW_Piazza Matteotti_Timmari_3790877,00:01:00,22:59:00,3600,1
 3776284_NW_Timmari_Piazza Matteotti_3790878,01:01:00,23:59:00,3600,1
 3776285_WW_via Frangione_Via Fermi_3767630,01:01:00,23:59:00,3600,1
 3776285_WW_Via Fermi_Via Frangione_3796928,6:50:00,21:30:00,3600,1
@@ -76,11 +73,8 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3776290_SW_via della Quercia_via Dante_3776268,01:01:00,23:59:00,3600,1
 3776290_NW_via Dante_via della Quercia_3776267,00:01:00,22:59:00,3600,1
 3776290_NW_via della Quercia_via Dante_3776268,01:01:00,23:59:00,3600,1
-3776291_WW_Cimitero_Piazza Matteotti_3776269,01:01:00,23:59:00,3600,1
 3776291_WW_Piazza Matteotti_Cimitero_3776270,00:01:00,22:59:00,3600,1
-3776291_SW_Cimitero_Piazza Matteotti_3776269,01:01:00,23:59:00,3600,1
 3776291_SW_Piazza Matteotti_Cimitero_3776270,00:01:00,22:59:00,3600,1
-3776291_NW_Cimitero_Piazza Matteotti_3776269,01:01:00,23:59:00,3600,1
 3776291_NW_Piazza Matteotti_Cimitero_3776270,00:01:00,22:59:00,3600,1
 3776292_WW_Piazza S.Agnese_via Fermi_3776281,00:01:00,22:59:00,3600,1
 3776292_WW_via Fermi_Piazza S.Agnese_3784948,00:01:00,22:59:00,3600,1
@@ -88,11 +82,8 @@ trip_id,start_time,end_time,headway_secs,exact_times
 3776292_SW_via Fermi_Piazza S.Agnese_3784948,00:01:00,22:59:00,3600,1
 3776292_NW_Piazza S.Agnese_via Fermi_3776281,00:01:00,22:59:00,3600,1
 3776292_NW_via Fermi_Piazza S.Agnese_3784948,00:01:00,22:59:00,3600,1
-3776293_WW_Piazza Matteotti_via 1° maggio_3776265,00:01:00,22:59:00,3600,1
 3776293_WW_Via 1° maggio_Piazza Matteotti_3776266,00:01:00,22:59:00,3600,1
-3776293_SW_Piazza Matteotti_via 1° maggio_3776265,00:01:00,22:59:00,3600,1
 3776293_SW_Via 1° maggio_Piazza Matteotti_3776266,00:01:00,22:59:00,3600,1
-3776293_NW_Piazza Matteotti_via 1° maggio_3776265,00:01:00,22:59:00,3600,1
 3776293_NW_Via 1° maggio_Piazza Matteotti_3776266,00:01:00,22:59:00,3600,1
 3776295_WW_Piazza Matteotti_Borgo Venusio_3776280,00:01:00,22:59:00,3600,1
 3776295_WW_Borgo Venusio_Piazza Matteotti_3776279,01:01:00,23:59:00,3600,1
