@@ -1,38 +1,33 @@
 ## Introduzione ##
 
-__this introduction is still very much in progress__
-
 GtfsMaker è uno script per generare automaticamente i GTFS per il trasporto pubblico di Matera partendo dalle informazioni contenute su OpenStreetMap e gli orari degli autobus dell'azienda di trasporti [Miccolis](http://www.miccolis-spa.it/).
 
 [GTFS](https://developers.google.com/transit/gtfs/) è uno standard de facto che descrive gli orari e le informazioni geografiche associate al trasporto pubblico. Questi dati sono in un formato facilmente interpretabile da un computer e quindi possono essere usati per sviluppare molte applicazioni di interesse per la comunità.
 
-La finalità di questo progetto è costruire uno strumento di semplice utilizzo per tenere aggiornate le informazioni sul trasporto pubblico di Matera.
+Esempi di applicativi open source dove possono essere caricati i dati GTFS:
+* [Travic](http://tracker.geops.ch/)
+* [Liberario](https://github.com/grote/Liberario)
+
+La finalità di questo progetto è costruire uno strumento di semplice utilizzo per tenere aggiornate le informazioni sul trasporto pubblico di Matera. Poiché Miccolis gestisce il trasporto pubblico in [molte città](http://www.miccolis-spa.it/la-tua-citta) del sud Italia, speriamo che questo lavoro possa tornare utile anche altrove. Se abitate in una di queste città e siete interessati, siamo disposti a collaborare molto volentieri!
 
 La qualità e la ricchezza di informazioni e dettagli del dataset può essere migliorata con il tempo grazie ai contributi della comunità di mapper OpenStreetMap di Matera.
 
-Al momento solo il file miccolis/timetables/by_line.txt è generato a mano. Gli altri dati siamo riusciti a ricavarli automaticamente da OpenStreetMap e dagli orari di Miccolis.
+Al momento solo il file miccolis/timetables/by_line.txt (grazie Alberto!) è generato a mano. Gli altri dati siamo riusciti a ricavarli automaticamente da OpenStreetMap e dagli orari di Miccolis.
 
-I dati su OpenStreetMap sono stati caricati da diversi volenterosi che si sono offerti di passare qualche ora a bordo degli autobus di Matera armati di uno smartphone e tanta pazienza!
+I dati su OpenStreetMap sono stati caricati da diversi volenterosi che si sono offerti di passare qualche ora a bordo degli autobus di Matera armati di uno smartphone e tanta pazienza! Abbiamo [una pagina wiki](http://wiki.openstreetmap.org/wiki/Matera) su OSM in cui teniamo traccia dei progressi nella mappatura.
 
-La qualità del dataset è da valutare sul campo. Alcune informazioni sono mancanti su OpenStreetMap, ma lo script riporta anche quali sono i dati mancanti.
+La qualità del dataset è da valutare sul campo. Alcune informazioni sono mancanti su OpenStreetMap e alcune informazioni informali descritte negli orari di Miccolis non sono state tradotte in GTFS.
+In ogni caso lo script riporta anche quali sono i dati mancanti e gli eventuali problemi. Queste informazioni potrebbero essere di aiuto per i mapper al fine di capire dove è necessario intervenire.
 
 ## Installazione ##
 
-Lo script richiede come prerequisito NodeJS.
+Lo script richiede come prerequisito NodeJS e git.
 
     $ git clone https://github.com/unmonastery/GtfsMaker.git
     $ cd GtfsMaker/
     $ npm install
 
 ## Istruzioni ##
-
-La struttura delle directory è la seguente:
-
-- cache - directory temporanea con i file scaricati da OSM
-- gtfs  - directory con i file gtfs prodotti dallo script
-- miccolis
--- calendar - variazioni stagionali delle corse
--- timetables - orari degli autobus per linea
 
 Per generare una nuova versione di file GTFS prendendo dati aggiornati da OpenStreetMap:
 
@@ -46,32 +41,38 @@ Se alcune informazioni sono mancanti su OSM, lo script lo segnala. In questo mod
 
 Significa che la fermata OSM con id 2509490275 non ha il tag tags.ref (i.e. il  numero di palo nella convenzione che abbiamo seguito). Inoltre indica il numero della relazione di tipo route di cui fa parte la fermata.
 
-## Valida i file gtfs generati ##
-
-Lo script include un validatore per gtfs chiamato [FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator).
-Questo programma richiede Python 2.7.
-
-Per lanciare FeedValidator sul dataset appena creato:
+Per validare i gtfs prodotti utilizziamo il validatore [FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator) che può essere eseguito con questo comando:
 
     $ grunt validate
 
 Viene generato un file validation-results.html che mostra i problemi attuali del gtfs generato.
 
-## Problemi ##
+Poiché il validatore è molto severo e alcune applicazioni potrebbero non accettare i gtfs se non passano il test del validatore, abbiamo scritto un piccolo script per "pulire" i dati gtfs ed eliminare le parti mancanti o che potrebbero causare problemi.
 
-TODO elenco dei problemi che abbiamo al momento per generare i gtfs.
+    $ grunt cleaning
 
-* qualità gtfs validation-results.html
+Le correzioni che lo script fa vengono mostrate in output.
+
+Infine alcune applicazioni non sanno interpretare i gtfs che usano il file frequencies.txt che elenca le frequenze di arrivo degli autobus senza indicare l'orario esatto. Per questa ragione abbiamo creato un altro script per generare la versione estesa di frequencies.txt con tutti gli orari.
+
+    $ grunt unfolded_stop_times
+
+Il risultato è un file unfolded_stop_times.txt che deve essere rinominato in stop_times.txt quando utilizzato nell'applicazione di interesse.
 
 ## Demo ##
 
-TODO
+A [video](http://vimeo.com/112420472) showing our gtfs at work on [Ulm LiveMap](https://github.com/UlmApi/livemap).
+In this case gtfs are used to simulate real-time visualization of public transportation.
+
+Stiamo lavorando ad [unTransit](http://bus.matera.io/), un'app html/mobile per visualizzare le informazioni contenute nei gtfs in modo più comprensibile per un essere umano.
 
 ## Risorse utili ##
 
-[Orari Miccolis](https://docs.google.com/spreadsheets/d/1A328lZSG3Y9uSz8uSy2FNkstqgOhokbtgcCVSIB4a5o/edit#gid=234488140)
-
-[FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator) by Google
+* [Il formato GTFS](https://developers.google.com/transit/gtfs/)
+* [OpenStreetMap Wiki per Matera](http://wiki.openstreetmap.org/wiki/Matera)
+* [L'azienda di trasporto pubblico Miccolis](http://www.miccolis-spa.it)
+* [Orari Miccolis](https://docs.google.com/spreadsheets/d/1A328lZSG3Y9uSz8uSy2FNkstqgOhokbtgcCVSIB4a5o/edit#gid=234488140)
+* [FeedValidator](https://github.com/google/transitfeed/wiki/FeedValidator) by Google
 
 ## Licenza ##
 
@@ -81,4 +82,6 @@ TODO
 
 ## Ringraziamenti ##
 
-TODO
+* [Piersoft](http://www.piersoft.it/)
+* [Simone Cortesi](http://cortesi.com/)
+* [nonMonastero](matera.unmonastery.org)
