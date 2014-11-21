@@ -5,7 +5,7 @@ GtfsMaker è uno script per generare automaticamente i GTFS per il trasporto pub
 [GTFS](https://developers.google.com/transit/gtfs/) è uno standard de facto che descrive gli orari e le informazioni geografiche associate al trasporto pubblico. Questi dati sono in un formato facilmente interpretabile da un computer e quindi possono essere usati per sviluppare molte applicazioni di interesse per la comunità.
 
 Esempi di applicativi open source dove possono essere caricati i dati GTFS:
-* [Travic](http://tracker.geops.ch/)
+* [Travic](http://tracker.geops.ch/). Questo progetto al momento mette a disposizione più di 70 feed gtfs a livello mondiale. [Stiamo lavorando](https://twitter.com/elfpavlik/status/535374589506113536) per far pubblicare i gtfs di Matera sul sito. Solo [tre città italiana](http://tracker.geops.ch/?z=5&s=1&x=1986578.1865&y=4898392.5741&l=transport) sono presenti ora e soltanto Roma per il centro-sud Italia.
 * [Liberario](https://github.com/grote/Liberario)
 
 La finalità di questo progetto è costruire uno strumento di semplice utilizzo per tenere aggiornate le informazioni sul trasporto pubblico di Matera. Poiché Miccolis gestisce il trasporto pubblico in [molte città](http://www.miccolis-spa.it/la-tua-citta) del sud Italia, speriamo che questo lavoro possa tornare utile anche altrove. Se abitate in una di queste città e siete interessati, siamo disposti a collaborare molto volentieri!
@@ -61,10 +61,10 @@ Il risultato è un file unfolded_stop_times.txt che deve essere rinominato in st
 
 ## Demo ##
 
-A [video](http://vimeo.com/112420472) showing our gtfs at work on [Ulm LiveMap](https://github.com/UlmApi/livemap).
-In this case gtfs are used to simulate real-time visualization of public transportation.
+Un [video](http://vimeo.com/112420472) che mostra i nostri gtfs al lavoro con [Ulm LiveMap](https://github.com/UlmApi/livemap).
+In questo caso i file gtfs sono usati per simulare la visualizzazione in real time del trasporto pubblico.
 
-Stiamo lavorando ad [unTransit](http://bus.matera.io/), un'app html/mobile per visualizzare le informazioni contenute nei gtfs in modo più comprensibile per un essere umano.
+Stiamo lavorando ad [unTransit](https://github.com/unmonastery/untransit), un'app html/mobile per visualizzare le informazioni contenute nei gtfs in modo più comprensibile per un essere umano. A breve abbiamo intenzione di aggiungere ad unTransit la possibilità di tracciare in tempo reale la propria posizione.
 
 ## Risorse utili ##
 
