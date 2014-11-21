@@ -10,7 +10,7 @@ module.exports = function(gtfs){
     var index = _.findIndex( stopTimes, function(stopTime){
       return stopTime['trip_id'] == frequency['trip_id'];
     });
-    if ( index !== -1 ){
+    if ( index != -1 ){
       // keep this trip
       filtered.push([
         frequency['trip_id'],

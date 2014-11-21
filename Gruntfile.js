@@ -195,7 +195,7 @@ module.exports = function(grunt){
 
     var frequenciesFilter = require('./filters/skip-frequencies-with-tripId-without-stops');
     var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
-    var frequencies = frequenciesFilter( loadGtfs(['frequencies', 'stops']) );
+    var frequencies = frequenciesFilter( loadGtfs(['frequencies', 'stop_times']) );
     // overwrite frequencies file
     fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
 
@@ -207,6 +207,15 @@ module.exports = function(grunt){
     var frequencies = duplicateIdsFilter( loadGtfs(['frequencies']) );
     // overwrite frequencies file
     fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
+  });
+
+  grunt.registerTask('unfolded_stop_times', function(){
+
+    var stoptimesBuilder = require('./builders/unfolded_stop_times');
+    var csvHeader = "trip_id,arrival_time,departure_time,stop_id,stop_sequence\n";
+    var stoptimes = stoptimesBuilder( loadGtfs([ 'frequencies', 'stop_times'] ) );
+    fs.writeFileSync('./gtfs/unfolded_stop_times.txt', csvHeader + toCSV(stoptimes));
+
   });
 
 

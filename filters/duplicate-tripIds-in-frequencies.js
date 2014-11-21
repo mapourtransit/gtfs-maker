@@ -5,11 +5,11 @@ module.exports = function(gtfs){
 
   var filtered = [];
 
-  frequencies.forEach(function(current){
+  frequencies.forEach(function(current, currentId){
     var index = _.findIndex( filtered, function( frequency ){
       return current['trip_id'] == frequency[0];
     });
-    if ( index !== -1 ){
+    if ( index == -1 ){
       // keep this trip
       filtered.push([
         current['trip_id'],
