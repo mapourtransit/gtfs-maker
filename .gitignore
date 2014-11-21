@@ -11,3 +11,5 @@ gtfs/stop_times.txt
 gtfs/trips.txt
 
 validation-results.html
+matera_gtfsintriples.ttl
+matera-gtfs.zip

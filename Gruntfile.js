@@ -8,11 +8,26 @@ var conf = require('./package.json').conf;
 module.exports = function(grunt){
 
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.initConfig({
     exec: {
       validate: {
         command: 'python ./utils/transitfeed/feedvalidator.py gtfs/'
+      },
+      mkRdf: {
+        command: './utils/gtfs-csv2rdf/gtfs-csv2rdf matera-gtfs.zip 0.1 http://data.gtfs.org/  > matera_gtfsintriples.ttl'
+      }
+    },
+    compress: {
+      gtfs: {
+        options: {
+          archive: 'matera-gtfs.zip'
+        },
+        files: [
+        {src: ['gtfs/*'], dest: '.', filter: 'isFile'}, // includes files in path
+        {expand: true, cwd: 'path/', src: ['**'], dest: '.'} // makes all src relative to cwd
+        ]
       }
     }
   });
@@ -224,6 +239,8 @@ module.exports = function(grunt){
   grunt.registerTask('compile', ['cache', 'shapes', 'stops', 'calendar', 'calendar_dates', 'stop_times', 'routes', 'frequencies', 'trips'])
 
   grunt.registerTask('validate', ['exec:validate']);
+
+  grunt.registerTask('mkRdf', ['exec:mkRdf']);
 
   // perform a deep cleaning of generated datasets in order to pass validation
   // note that in this way we can lose some information
