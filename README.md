@@ -16,7 +16,7 @@ Al momento solo il file miccolis/timetables/by_line.txt (grazie Alberto!) è gen
 
 I dati su OpenStreetMap sono stati caricati da diversi volenterosi che si sono offerti di passare qualche ora a bordo degli autobus di Matera armati di uno smartphone e tanta pazienza! Abbiamo [una pagina wiki](http://wiki.openstreetmap.org/wiki/Matera) su OSM in cui teniamo traccia dei progressi nella mappatura.
 
-La qualità del dataset è da valutare sul campo. Alcune informazioni sono mancanti su OpenStreetMap e alcune informazioni informali descritte negli orari di Miccolis non sono state tradotte in GTFS.
+La qualità del dataset è da valutare sul campo: c'è ancora molto lavoro da fare per avere un dataset pulito e senza errori. Alcune informazioni sono mancanti su OpenStreetMap e alcune informazioni informali descritte negli orari di Miccolis non sono state tradotte in GTFS.
 In ogni caso lo script riporta anche quali sono i dati mancanti e gli eventuali problemi. Queste informazioni potrebbero essere di aiuto per i mapper al fine di capire dove è necessario intervenire.
 
 Il dataset prodotto da questo script si trova a [questo link](https://github.com/unmonastery/matera-gtfs). Però è sempre meglio eseguire lo script ogni volta perché in questo modo vengono integrate informazioni fresche da OpenStreetMap.
