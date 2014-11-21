@@ -12,12 +12,14 @@ La finalità di questo progetto è costruire uno strumento di semplice utilizzo 
 
 La qualità e la ricchezza di informazioni e dettagli del dataset può essere migliorata con il tempo grazie ai contributi della comunità di mapper OpenStreetMap di Matera.
 
-Al momento solo il file miccolis/timetables/by_line.txt (grazie Alberto!) è generato a mano. Gli altri dati siamo riusciti a ricavarli automaticamente da OpenStreetMap e dagli orari di Miccolis.
+Al momento solo il file miccolis/timetables/by_line.txt (grazie Alberto!) è generato a mano. Gli altri dati siamo riusciti a ricavarli automaticamente da OpenStreetMap e dagli orari di Miccolis. Il parser per estrarre i dati da Miccolis si trova [qui](https://github.com/unmonastery/miccolis-parser).
 
 I dati su OpenStreetMap sono stati caricati da diversi volenterosi che si sono offerti di passare qualche ora a bordo degli autobus di Matera armati di uno smartphone e tanta pazienza! Abbiamo [una pagina wiki](http://wiki.openstreetmap.org/wiki/Matera) su OSM in cui teniamo traccia dei progressi nella mappatura.
 
 La qualità del dataset è da valutare sul campo. Alcune informazioni sono mancanti su OpenStreetMap e alcune informazioni informali descritte negli orari di Miccolis non sono state tradotte in GTFS.
 In ogni caso lo script riporta anche quali sono i dati mancanti e gli eventuali problemi. Queste informazioni potrebbero essere di aiuto per i mapper al fine di capire dove è necessario intervenire.
+
+Il dataset prodotto da questo script si trova a [questo link](https://github.com/unmonastery/matera-gtfs). Però è sempre meglio eseguire lo script ogni volta perché in questo modo vengono integrate informazioni fresche da OpenStreetMap.
 
 ## Installazione ##
 
@@ -68,6 +70,7 @@ Stiamo lavorando ad [unTransit](https://github.com/unmonastery/untransit), un'ap
 
 ## Risorse utili ##
 
+* [Miccolis Parser](https://github.com/unmonastery/miccolis-parser) lo script che utilizziamo per estrarre informazioni dai file di Miccolis
 * [Il formato GTFS](https://developers.google.com/transit/gtfs/)
 * [OpenStreetMap Wiki per Matera](http://wiki.openstreetmap.org/wiki/Matera)
 * [L'azienda di trasporto pubblico Miccolis](http://www.miccolis-spa.it)
