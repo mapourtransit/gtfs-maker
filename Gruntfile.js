@@ -191,9 +191,33 @@ module.exports = function(grunt){
 
   });
 
+  grunt.registerTask('tripsWithoutStops', function(){
+
+    var frequenciesFilter = require('./filters/skip-frequencies-with-tripId-without-stops');
+    var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
+    var frequencies = frequenciesFilter( loadGtfs(['frequencies', 'stops']) );
+    // overwrite frequencies file
+    fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
+
+  });
+
+  grunt.registerTask('duplicateTripIdsInFrequencies', function(){
+    var duplicateIdsFilter = require('./filters/duplicate-tripIds-in-frequencies');
+    var csvHeader = "trip_id,start_time,end_time,headway_secs,exact_times\n";
+    var frequencies = duplicateIdsFilter( loadGtfs(['frequencies']) );
+    // overwrite frequencies file
+    fs.writeFileSync('./gtfs/frequencies.txt', csvHeader + toCSV(frequencies));
+  });
+
+
+
   // NB: the order of task in important
   grunt.registerTask('compile', ['cache', 'shapes', 'stops', 'calendar', 'calendar_dates', 'stop_times', 'routes', 'frequencies', 'trips'])
 
   grunt.registerTask('validate', ['exec:validate']);
+
+  // perform a deep cleaning of generated datasets in order to pass validation
+  // note that in this way we can lose some information
+  grunt.registerTask('cleaning', ['tripsWithoutStops', 'duplicateTripIdsInFrequencies'])
 
 };

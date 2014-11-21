@@ -19,10 +19,6 @@ module.exports = function(data, gtfs){
 
   masters.forEach( function(master){
 
-    if ( master.id == 3776289 ){
-
-    }
-
     calendar.forEach( function(service){
 
       master.members.forEach(function(member){
