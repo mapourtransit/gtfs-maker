@@ -6,7 +6,7 @@ GtfsMaker è uno script per generare automaticamente i GTFS per il trasporto pub
 
 Esempi di applicativi open source dove possono essere caricati i dati GTFS:
 * [Travic](http://tracker.geops.ch/). Questo progetto al momento mette a disposizione più di 70 feed gtfs a livello mondiale. [Stiamo lavorando](https://twitter.com/elfpavlik/status/535374589506113536) per far pubblicare i gtfs di Matera sul sito. Solo [tre città italiane](http://tracker.geops.ch/?z=5&s=1&x=1986578.1865&y=4898392.5741&l=transport) sono presenti ora e soltanto Roma per il centro-sud Italia.
-* [Liberario](https://github.com/grote/Liberario)
+* [Liberario](https://github.com/grote/Liberario), un'app Android open source.
 
 La finalità di questo progetto è costruire uno strumento di semplice utilizzo per tenere aggiornate le informazioni sul trasporto pubblico di Matera. Poiché Miccolis gestisce il trasporto pubblico in [molte città](http://www.miccolis-spa.it/la-tua-citta) del sud Italia, speriamo che questo lavoro possa tornare utile anche altrove. Se abitate in una di queste città e siete interessati, siamo disposti a collaborare molto volentieri!
 
@@ -61,10 +61,20 @@ Infine alcune applicazioni non sanno interpretare i gtfs che usano il file frequ
 
 Il risultato è un file unfolded_stop_times.txt che deve essere rinominato in stop_times.txt quando utilizzato nell'applicazione di interesse.
 
+### Funzionalità avanzate ###
+
+Dai file gtfs è possibile generare un file [RDF](http://www.w3.org/RDF/) grazie al programma [gtfs-csv2rdf](https://github.com/OpenTransport/gtfs-csv2rdf) di @pietercolpaert.
+
+**questo comando funziona solo in Linux per il momento**
+
+    $ grunt compress:gtfs
+    $ grunt mkRdf
+
 ## Demo ##
 
-Un [video](http://vimeo.com/112420472) che mostra i nostri gtfs al lavoro con [Ulm LiveMap](https://github.com/UlmApi/livemap).
-In questo caso i file gtfs sono usati per simulare la visualizzazione in real time del trasporto pubblico.
+Questa è una [demo](http://87.230.17.190:7777/map) che mostra i nostri gtfs al lavoro con [Ulm LiveMap](https://github.com/UlmApi/livemap).
+I file gtfs sono usati per simulare la visualizzazione in real time del trasporto pubblico.
+Se il server non dovesse essere disponibile, abbiamo preparato anche un [video](http://vimeo.com/112420472)
 
 Stiamo lavorando ad [unTransit](https://github.com/unmonastery/untransit), un'app html/mobile per visualizzare le informazioni contenute nei gtfs in modo più comprensibile per un essere umano. A breve abbiamo intenzione di aggiungere ad unTransit la possibilità di tracciare in tempo reale la propria posizione.
 
@@ -88,3 +98,4 @@ Stiamo lavorando ad [unTransit](https://github.com/unmonastery/untransit), un'ap
 * [Piersoft](http://www.piersoft.it/)
 * [Simone Cortesi](http://cortesi.com/)
 * [nonMonastero](matera.unmonastery.org)
+* Demo VM courtesy of @almereyda
