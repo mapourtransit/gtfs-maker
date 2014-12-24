@@ -12,7 +12,7 @@ module.exports = function(data){
         stops.push({
           stop_id:element.id,
           stop_code:element.tags.ref || element.tags.rel,
-          stop_name:element.tags.name || element.tags['addr:street'],
+          stop_name:element.tags.name || element.tags['addr:street'] || element.tags.ref || element.tags.rel,
           stop_desc:element.tags.desc,
           stop_lat:element.lat,
           stop_lon:element.lon
