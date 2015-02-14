@@ -1,5 +1,5 @@
 {
-  "name": "timetables",
+  "name": "gtfs-maker",
   "version": "0.0.0",
   "description": "### Download data from OSM",
   "main": "create-frequency-file.js",
