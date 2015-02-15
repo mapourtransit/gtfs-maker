@@ -38,11 +38,18 @@ var config = {
       dir:'./gtfs/'
     },
     // TODO delete and move in matera-gtfs
+    // TODO find better names for miccolis files
     // it should be possible to set/override files from there
     miccolis:{
       format:'csv',
       ext:'.csv',
       dir:'./cache/'
+    },
+    timetables:{
+      isDirectory:true,
+      format:'csv',
+      ext:'.csv',
+      dir:'./extracted/timetables/'
     }
   }
 };
@@ -58,15 +65,42 @@ var parser = {
 
 
 // TODO allow basedir override
+/**
+ * load static assets from files
+ *
+ * list, list of file kind as specified in config file
+ *
+ * a file kind could be a simple file (csv or json)
+ * or a directory of similar files
+ *
+ */
 function loadData(list){
   return list.map(function(type){
+
     var file = config.data[type];
+    var rootdir;
     var filepath;
+
     if (!file){
-      throw new Error('File ' + type + ' does not exist.');
+      throw new Error('No file config for type ' + type + '.');
     }
-    filepath = file.dir + type + file.ext;
-    return parser[ file.format ].call(undefined, filepath );
+    // if it is a directory load all files in a bundle
+    if ( file.isDirectory ){
+      return fs.readdirSync( file.dir )
+        .map(function(filename){
+          filepath = file.dir + filename;
+          return {
+            name:filename,
+            content:parser[ file.format ].call(undefined, filepath )
+          };
+       });
+    } else {
+      filepath = file.dir + type + file.ext;
+      if ( !fs.existsSync(filepath)){
+        throw new Error('File not found ' + filepath + '.');
+      }
+      return parser[ file.format ].call(undefined, filepath );
+    }
   });
 }
 
