@@ -1,11 +1,13 @@
 var _ = require('lodash');
 
-module.exports = function(data, gtfs, timetables){
+
+module.exports = function(data){
 
   var masters = data[0].elements;
   var routes = data[1].elements;
   var stops = data[2].elements;
-  var calendar = gtfs[0];
+  var timetables = data[3];
+  var trips = data[4];
 
   var stoptimes = [];
 
@@ -18,59 +20,56 @@ module.exports = function(data, gtfs, timetables){
   _.reduce(routes, createLookup, lookup.routes);
   _.reduce(stops, createLookup, lookup.stops);
 
-  calendar.forEach( function(service){
-
+  trips.forEach(function(trip){
     masters.forEach( function(master){
-
       // fetch timetable for this line
-      var timetable = timetables[ master.tags.ref.replace('/', '') ];
-
+      var timetable = _.find( timetables, function(timetable){
+        return timetable.line == master.tags.ref;
+      });
+      if (!timetable){
+        throw new Error('No timetable found for route ' + master.tags.ref + '.');
+      }
       master.members.forEach(function(member){
         var route = lookup.routes[member.ref];
-        var tripId = master.id
-                     + '_' + service['service_id']
-                     + '_' + route.tags.from
-                     + '_' + route.tags.to;
+        var tripId = trip.trip_id;
         var index = 0;
         route.members.forEach(function(member){
           if (member.type == 'node' ){
             if (member.role && member.role == 'platform'){
               var stop = lookup.stops[ member.ref ];
               if (!stop){
-                console.error('stop not found: ' + member.ref + ' in route ' + route.id + ' (' + master.tags.name + ')');
-                return;
+                throw new Error('stop not found: ' + member.ref + ' in route ' + route.id + ' (' + master.tags.name + ')');
               }
               var code = stop.tags.ref || stop.tags.rel;
               if (!code){
-                console.error('stop ' + member.ref + ' does not have tags.ref or tag.rel (deprecated) in route ' + route.id + ' (' + master.tags.name + ')');
-                return;
+                throw new Error('stop ' + member.ref + ' does not have tags.ref or tag.rel (deprecated) in route ' + route.id + ' (' + master.tags.name + ')');
               }
-              // fetch the first row where stop.ref matches pole number
-              var row = _.findWhere( timetable,{
-                'id':code
+
+              var timesForStop = _.filter(timetable.stopTimes, function(stoptime){
+                return stoptime.id == code;
               });
-              if (!row){
-                console.error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
-                return;
+              if (timesForStop.length === 0){
+                throw new Error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
               }
-              var time = row['time'];
-              if (!time){
-                console.error('no arrival or departure time for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
-                return;
-              }
-              stoptimes.push([
-                tripId, // trip_id
-                time, // arrival_time
-                time, // departure_time
-                stop.id, // stop_id
-                index++ // stop_sequence
-              ]);
+              timesForStop.forEach(function(stoptime){
+                var time = stoptime.time;
+                var stopId = stoptime.id;
+                if (!time){
+                  throw new Error('no arrival/departure time for stop ' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
+                }
+                stoptimes.push({
+                  trip_id:tripId,
+                  arrival_time:time,
+                  departure_time:time,
+                  stop_id:stopId,
+                  stop_sequence:index++
+                });
+              });
+
             }
           }
         });
-
       });
-
     });
   });
 

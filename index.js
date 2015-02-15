@@ -37,6 +37,11 @@ var config = {
       ext:'.txt',
       dir:'./gtfs/'
     },
+    trips:{
+      format:'csv',
+      ext:'.txt',
+      dir:'./gtfs/'
+    },
     // TODO delete and move in matera-gtfs
     // TODO find better names for miccolis files
     // it should be possible to set/override files from there
@@ -49,7 +54,18 @@ var config = {
       isDirectory:true,
       format:'csv',
       ext:'.csv',
-      dir:'./extracted/timetables/'
+      dir:'./extracted/timetables/',
+      transform:function(item){
+        var matches = /MT(.*)\.csv/.exec(item.name);
+        if ( !matches ){
+          throw new Error('Timetables file not in correct format.');
+        }
+        var name = matches[1];
+        return {
+          line:name,
+          stopTimes:item.content
+        };
+      }
     }
   }
 };
@@ -93,7 +109,7 @@ function loadData(list){
             name:filename,
             content:parser[ file.format ].call(undefined, filepath )
           };
-       });
+       }).map( file.transform );
     } else {
       filepath = file.dir + type + file.ext;
       if ( !fs.existsSync(filepath)){
@@ -172,7 +188,8 @@ module.exports = {
   builders: {
     routes: require('./builders/routes'),
     shapes: require('./builders/shapes'),
-    stops: require('./builders/stops')
+    stops: require('./builders/stops'),
+    stopTimes: require('./builders/stop_times')
   },
   cache:cache,
   load:loadData,
