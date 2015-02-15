@@ -1,7 +1,9 @@
 var _ = require('lodash');
 
 
-module.exports = function(data){
+module.exports = function(data, options){
+
+  options = options || {};
 
   var masters = data[0].elements;
   var routes = data[1].elements;
@@ -10,6 +12,8 @@ module.exports = function(data){
   var trips = data[4];
 
   var stoptimes = [];
+
+  var exclude = options.exclude || [];
 
   // create lookup for ways and nodes
   var lookup = { routes: {}, stops: {} };
@@ -22,6 +26,9 @@ module.exports = function(data){
 
   trips.forEach(function(trip){
     masters.forEach( function(master){
+      if ( _.contains(exclude, master.tags.ref)){
+        return; // skip this line
+      }
       // fetch timetable for this line
       var timetable = _.find( timetables, function(timetable){
         return timetable.line == master.tags.ref;
