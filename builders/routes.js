@@ -8,12 +8,13 @@ module.exports = function(data){
   };
 
   return objects.masters.map(function(master){
-    return [
-      master.id, // route_id
-      1, // agency_id
-      master.tags.ref, // route_short_name
-      master.tags.name, // route_long_name
-      3 // route_type
-    ];
+    return {
+      route_id:master.id, // route_id
+      // TODO this should be a parameter since it depends on particular impl
+      agency_id:1, // agency_id
+      route_short_name:master.tags.ref, // route_short_name
+      route_long_name:master.tags.name, // route_long_name
+      route_type:3 // route_type
+    };
   });
 };
