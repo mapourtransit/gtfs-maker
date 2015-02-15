@@ -3,6 +3,7 @@ var _ = require('lodash');
 var request = require('superagent');
 var Promise = require('es6-promise').Promise;
 var csv = require('csvjson');
+var converter = require('json-2-csv');
 
 var config = {
   data: {
@@ -69,6 +70,19 @@ function loadData(list){
   });
 }
 
+function saveDataAsCsv(data, filepath){
+  return new Promise(function(resolve, reject){
+    converter.json2csv(data, function(err, csv){
+      if (err){
+        reject(err);
+      } else {
+        fs.writeFileSync( filepath, csv );
+        resolve();
+      }
+    });
+  });
+}
+
 // XXX refactor, duplicate code also present in Gruntfile.js
 /**
  * params object with customization options for OSM queries
@@ -127,5 +141,6 @@ module.exports = {
     stops: require('./builders/stops')
   },
   cache:cache,
-  load:loadData
+  load:loadData,
+  saveAsCsv:saveDataAsCsv
 };
