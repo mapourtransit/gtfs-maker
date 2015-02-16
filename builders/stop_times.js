@@ -50,9 +50,7 @@ module.exports = function(data, options){
 
     // fetch timetable for this line
     var timetable = _.find( timetables, function(timetable){
-      // XXX replace needed to handle with 6/A, 6/B, find a better solution
-      // not dependent on Miccolis
-      return timetable.line == master.tags.ref.replace('/', '');
+      return timetable.osmId == master.id;
     });
     if (!timetable){
       throw new Error('No timetable found for route ' + master.tags.ref + '.');

@@ -56,13 +56,17 @@ var config = {
       ext:'.csv',
       dir:'./extracted/timetables/',
       transform:function(item){
+        function lookup(lineName){
+          return lineName;
+        }
         var matches = /MT(.*)\.csv/.exec(item.name);
         if ( !matches ){
           throw new Error('Timetables file not in correct format.');
         }
         var name = matches[1];
+        var osmId = lookup( name );
         return {
-          line:name,
+          osmId:osmId,
           stopTimes:item.content
         };
       }
