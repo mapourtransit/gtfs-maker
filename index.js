@@ -41,35 +41,6 @@ var config = {
       format:'csv',
       ext:'.txt',
       dir:'./gtfs/'
-    },
-    // TODO delete and move in matera-gtfs
-    // TODO find better names for miccolis files
-    // it should be possible to set/override files from there
-    miccolis:{
-      format:'csv',
-      ext:'.csv',
-      dir:'./cache/'
-    },
-    timetables:{
-      isDirectory:true,
-      format:'csv',
-      ext:'.csv',
-      dir:'./extracted/timetables/',
-      transform:function(item){
-        function lookup(lineName){
-          return lineName;
-        }
-        var matches = /MT(.*)\.csv/.exec(item.name);
-        if ( !matches ){
-          throw new Error('Timetables file not in correct format.');
-        }
-        var name = matches[1];
-        var osmId = lookup( name );
-        return {
-          osmId:osmId,
-          stopTimes:item.content
-        };
-      }
     }
   }
 };
@@ -83,6 +54,10 @@ var parser = {
   }
 };
 
+
+function setConfig(newConfiguration){
+  _.extend(config.data, newConfiguration);
+};
 
 // TODO allow basedir override
 /**
@@ -197,5 +172,6 @@ module.exports = {
   },
   cache:cache,
   load:loadData,
-  saveAsCsv:saveDataAsCsv
+  saveAsCsv:saveDataAsCsv,
+  config:setConfig
 };
