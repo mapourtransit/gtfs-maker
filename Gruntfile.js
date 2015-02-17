@@ -1,9 +1,10 @@
 var fs = require('fs');
 var _ = require('lodash');
 var csvjson = require('csvjson');
-var request = require('superagent');
 var Promise = require('es6-promise').Promise;
 var conf = require('./package.json').conf;
+
+var Overpass = require('./overpass');
 
 module.exports = function(grunt){
 
@@ -18,40 +19,17 @@ module.exports = function(grunt){
   });
 
   grunt.registerTask('cache', function(){
-    var OSM3S_API = 'http://api.openstreetmap.fr/oapi/interpreter';
 
     var done = this.async();
 
-    var mastersQuery = fs.readFileSync('queries/get-master-routes.osm3s').toString();
-    var stopsQuery = fs.readFileSync('queries/get-stops-nodes.osm3s').toString();
-    var routesQuery = fs.readFileSync('queries/get-routes-rel.osm3s').toString();
-    var waysQuery = fs.readFileSync('queries/get-routes-ways.osm3s').toString();
-    var nodesQuery = fs.readFileSync('queries/get-routes-nodes.osm3s').toString();
+    // FIXME use config!
+    var overpass = new Overpass([3652883, 3775826, 3776282]);
 
-    var queries = [mastersQuery, stopsQuery, routesQuery, waysQuery, nodesQuery];
-
-    /*
-     * gets data from OSM Overpass API
-     */
-    function queryOSM(query){
-      return new Promise(function(resolve, reject){
-        request.get(OSM3S_API)
-          .query({data: query})
-          .end(function(err, res){
-            if(err){
-              reject(err);
-            } else {
-              resolve(res.body);
-            }
-          });
-      });
-    }
-
+    var types = ['masters', 'stops', 'routes', 'ways', 'nodes'];
     /*
      * array of arrays with [routes, ways, nodes]
      */
     function saveData(data){
-      var types = ['masters', 'stops', 'routes', 'ways', 'nodes'];
       _.each(data, function(arr, index){
         fs.writeFileSync('./cache/' + types[index] + '.json', JSON.stringify(arr));
       });
@@ -61,7 +39,7 @@ module.exports = function(grunt){
     /*
      * get all data and save to disk
      */
-    Promise.all(queries.map(queryOSM))
+    Promise.all(types.map(overpass.fetch, overpass))
       .then(saveData)
       .catch(function(err){
         console.log(err);
