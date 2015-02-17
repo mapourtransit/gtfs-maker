@@ -1,9 +1,11 @@
 var fs = require('fs');
 var _ = require('lodash');
-var request = require('superagent');
+
 var Promise = require('es6-promise').Promise;
 var csv = require('csvjson');
 var converter = require('json-2-csv');
+
+var Overpass = require('./lib/overpass');
 
 var defaultData = {
   masters:{
@@ -68,30 +70,13 @@ _.extend( GtfsMaker.prototype, {
   cache:function cache(){
     var OSM3S_API = 'http://api.openstreetmap.fr/oapi/interpreter';
 
-    var mastersQuery = fs.readFileSync( __dirname + '/queries/get-master-routes.osm3s').toString();
-    var stopsQuery = fs.readFileSync(__dirname + '/queries/get-stops-nodes.osm3s').toString();
-    var routesQuery = fs.readFileSync(__dirname + '/queries/get-routes-rel.osm3s').toString();
-    var waysQuery = fs.readFileSync(__dirname + '/queries/get-routes-ways.osm3s').toString();
-    var nodesQuery = fs.readFileSync(__dirname + '/queries/get-routes-nodes.osm3s').toString();
+    var masterIds = _.map( this._settings.lines, function(line){
+      return line.osmId;
+    });
 
-    var queries = [mastersQuery, stopsQuery, routesQuery, waysQuery, nodesQuery];
+    var overpass = new Overpass( masterIds );
 
-    /*
-     * gets data from OSM Overpass API
-     */
-    function queryOSM(query){
-      return new Promise(function(resolve, reject){
-        request.get(OSM3S_API)
-          .query({data: query})
-          .end(function(err, res){
-            if(err){
-              reject(err);
-            } else {
-              resolve(res.body);
-            }
-          });
-      });
-    }
+    var types = ['masters', 'stops', 'routes', 'ways', 'nodes'];
 
     /*
      * array of arrays with [routes, ways, nodes]
@@ -107,8 +92,8 @@ _.extend( GtfsMaker.prototype, {
     /*
      * get all data and save to disk
      */
-    return Promise.all(queries.map(queryOSM))
-      .then(saveData);
+     return Promise.all(types.map(overpass.fetch, overpass))
+       .then(saveData);
 
   },
   /**
