@@ -132,7 +132,7 @@ _.extend( GtfsMaker.prototype, {
         if ( !fs.existsSync(filepath)){
           throw new Error('File not found ' + filepath + '.');
         }
-        return parser[ file.format ].call(undefined, filepath );
+        return parser[ file.format ].call(undefined, filepath ).map(file.transform || _.identity);
       }
     });
   },
