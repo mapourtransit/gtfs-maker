@@ -60,7 +60,12 @@ module.exports = function(data){
 
     _.each(path, function(nodeId, index){
       var node = lookup.nodes[nodeId];
-      shapes.push([route.id, node.lat, node.lon, index]);
+      shapes.push({
+        route_id:route.id,
+        shape_pt_lat:node.lat,
+        shape_pt_lon:node.lon,
+        shape_pt_sequence:index
+      });
     });
   });
 
