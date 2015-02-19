@@ -1,6 +1,0 @@
-[submodule "utils/transitfeed"]
-	path = utils/transitfeed
-	url = https://github.com/google/transitfeed
-[submodule "utils/gtfs-csv2rdf"]
-	path = utils/gtfs-csv2rdf
-	url = https://github.com/OpenTransport/gtfs-csv2rdf.git

@@ -1,5 +1,0 @@
-[out:json];                                                                                                                                  
-rel
-  ["type"="route_master"]
-  ["operator"~"[Mm]iccolis"];     
-out body;
