@@ -51,7 +51,8 @@ var parser = {
     return csv.toObject( filepath ).output;
   },
   json: function( filepath ){
-    return JSON.parse(fs.readFileSync( filepath ).toString());
+    // XXX picking elements
+    return JSON.parse(fs.readFileSync( filepath ).toString()).elements;
   }
 };
 
