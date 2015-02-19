@@ -1,6 +1,5 @@
 var fs = require('fs');
 var _ = require('lodash');
-var exec = require('child_process').exec;
 
 var Promise = require('es6-promise').Promise;
 var csv = require('csvjson');
@@ -148,19 +147,6 @@ _.extend( GtfsMaker.prototype, {
         }
       });
     });
-  },
-  validateGtfs:function(directory){
-    var command = 'python '+ __dirname + '/utils/transitfeed/feedvalidator.py ' + directory;
-    return new Promise(function(resolve, reject){
-      exec(command, function (error, stdout, stderr) {
-        if (error){
-          reject(error);
-        } else {
-          resolve();
-        }
-      });
-    });
-
   }
 });
 
