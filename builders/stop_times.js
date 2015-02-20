@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var Filter = require('../lib/filter');
+var moment = require('moment');
 
 module.exports = function(data, options){
 
@@ -55,6 +56,7 @@ module.exports = function(data, options){
         throw new Error('No timetable found for route ' + master.tags.ref + '.');
       }
       var index = 0;
+      var lastTime = moment("00:00", "HH:mm");
       // for each stop in this relation
       route.members.forEach(function(member){
         if (member.type == 'node' ){
@@ -71,11 +73,15 @@ module.exports = function(data, options){
             }
 
             var timesForStop = _.filter(timetable.stopTimes, function(stoptime){
-              return stoptime.id == code;
+              var time = stoptime.time;
+              if (!time) return false;
+              return stoptime.id == code
+                  && moment(time, "HH:mm").isAfter(lastTime);
             });
-            if (timesForStop.length === 0){
+
+            /*if (timesForStop.length === 0){
               throw new Error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
-            }
+            }*/
             timesForStop.forEach(function(stoptime){
               var time = stoptime.time;
               // time is valid only if seconds are included
@@ -92,6 +98,7 @@ module.exports = function(data, options){
                 stop_id:stopId,
                 stop_sequence:index++
               });
+              lastTime = moment(time, "HH:mm");
             });
 
           }

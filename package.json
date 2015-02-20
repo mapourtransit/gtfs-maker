@@ -13,6 +13,7 @@
     "es6-promise": "~1.0.0",
     "json-2-csv": "^1.0.8",
     "lodash": "*",
+    "moment": "^2.9.0",
     "superagent": "^0.18.0"
   }
 }
