@@ -1,13 +1,28 @@
 var _ = require('lodash');
 
 
-module.exports = function(data){
+module.exports = function(data, options){
+
+  function findLineNumber( masterOsmId ){
+    return _.result( _.find( settings.lines, function(line){
+      return masterOsmId === line.osmId;
+    }), 'number' );
+  }
 
   var objects = {
     masters: data[0]
   };
+  // XXX find a better way to pass this information to findLineNumber
+  var settings = this._settings;
 
-  return objects.masters.map(function(master){
+  options = options || {};
+  var include = options.include || [];
+
+  var includedMasters = _.select(objects.masters, function(row) {
+    return _.contains(include, findLineNumber( row.id ));
+  });
+
+  return includedMasters.map(function(master){
     return {
       route_id:master.id, // route_id
       // TODO this should be a parameter since it depends on particular impl
