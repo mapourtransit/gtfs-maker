@@ -78,6 +78,10 @@ module.exports = function(data, options){
             }
             timesForStop.forEach(function(stoptime){
               var time = stoptime.time;
+              // time is valid only if seconds are included
+              if ( time.length < 8){
+                time += ':00';
+              }
               if (!time){
                 throw new Error('no arrival/departure time for stop ' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
               }
