@@ -3,16 +3,23 @@
  * returns array with shapes for GTFS, one point per row
  */
 var _ = require('lodash');
+var Filter = require('../lib/filter');
 
-module.exports = function(data){
+module.exports = function(data, options){
 
   var shapes = [];
 
   var objects = {
-    routes: data[0],
-    ways: data[1],
-    nodes: data[2]
+    masters: data[0],
+    routes: data[1],
+    ways: data[2],
+    nodes: data[3]
   };
+
+  options = options || {};
+  var include = options.include || [];
+
+  var filter = new Filter(this._settings, include);
 
   // create lookup for ways and nodes
   var lookup = { ways: {}, nodes: {} };
@@ -23,8 +30,19 @@ module.exports = function(data){
   _.reduce(objects.ways, createLookup, lookup.ways);
   _.reduce(objects.nodes, createLookup, lookup.nodes);
 
+  // we need to find routes whose master is in the include list
+  // i.e. every route in some included master
+  var includedMasters = filter.included( objects.masters );
+  var includedRoutes = _.filter( objects.routes, function(route){
+    return _.some( includedMasters, function(master){
+      return !_.isEmpty( _.filter(master.members, function(member){
+        return member.ref === route.id
+      }));
+    });
+  });
+
   // create path
-  _.each(objects.routes, function(route){
+  _.each(includedRoutes, function(route){
     var ways = _.filter(route.members, function(member){
       return member.type === 'way';
     });
