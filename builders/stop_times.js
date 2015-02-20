@@ -65,6 +65,7 @@ module.exports = function(data, options){
             }
             // TODO stop.tags.rel is deprecated
             var code = stop.tags.ref || stop.tags.rel;
+            var stopId = stop.id;
             if (!code){
               throw new Error('stop ' + member.ref + ' does not have tags.ref or tag.rel (deprecated) in route ' + route.id + ' (' + master.tags.name + ')');
             }
@@ -77,7 +78,6 @@ module.exports = function(data, options){
             }
             timesForStop.forEach(function(stoptime){
               var time = stoptime.time;
-              var stopId = stoptime.id;
               if (!time){
                 throw new Error('no arrival/departure time for stop ' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
               }
