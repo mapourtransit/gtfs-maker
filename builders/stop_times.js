@@ -5,9 +5,9 @@ module.exports = function(data, options){
 
   options = options || {};
 
-  var masters = data[0].elements;
-  var routes = data[1].elements;
-  var stops = data[2].elements;
+  var masters = data[0];
+  var routes = data[1];
+  var stops = data[2];
   var timetables = data[3];
   var trips = data[4];
 

@@ -9,9 +9,9 @@ module.exports = function(data){
   var shapes = [];
 
   var objects = {
-    routes: data[0].elements,
-    ways: data[1].elements,
-    nodes: data[2].elements
+    routes: data[0],
+    ways: data[1],
+    nodes: data[2]
   };
 
   // create lookup for ways and nodes

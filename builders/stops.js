@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 module.exports = function(data){
   var stops = [];
-  _.each(data[0].elements, function(element){
+  _.each(data[0], function(element){
     if (element.type == 'node' ){
       if (element.tags.public_transport && element.tags.public_transport == 'platform'){
         stops.push({

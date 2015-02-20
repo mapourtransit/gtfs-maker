@@ -4,7 +4,7 @@ var _ = require('lodash');
 module.exports = function(data){
 
   var objects = {
-    masters: data[0].elements
+    masters: data[0]
   };
 
   return objects.masters.map(function(master){
