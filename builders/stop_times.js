@@ -1,5 +1,5 @@
 var _ = require('lodash');
-
+var Filter = require('../lib/filter');
 
 module.exports = function(data, options){
 
@@ -15,6 +15,8 @@ module.exports = function(data, options){
 
   var include = options.include || [];
 
+  var filter = new Filter(this._settings, include);
+
   // create lookup for ways and nodes
   var lookup = { routes: {}, stops: {}, masters:{} };
   function createLookup(acc, obj){
@@ -25,11 +27,7 @@ module.exports = function(data, options){
   _.reduce(stops, createLookup, lookup.stops);
   _.reduce(masters, createLookup, lookup.masters);
 
-  masters.forEach(function(master){
-
-    if ( !_.contains(include, master.tags.ref) ){
-      return; // skip this line
-    }
+  filter.included( masters ).forEach(function(master){
 
     var selectedTrips = _.filter(trips, function(trip){
       return trip.route_id == master.id;
