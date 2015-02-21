@@ -76,13 +76,14 @@ module.exports = function(data, options){
               var time = stoptime.time;
               if (!time) return false;
               return stoptime.id == code
-                  && moment(time, "HH:mm").isAfter(lastTime);
+                  && ( moment(time, "HH:mm").isAfter(lastTime) || moment(time, "HH:mm").isSame(lastTime) );
             });
 
             /*if (timesForStop.length === 0){
               throw new Error('no entry in timetable for stop "' + code + '" in route ' + route.id + ' (' + master.tags.name + ')');
             }*/
-            timesForStop.forEach(function(stoptime){
+            // take the first suitable time
+            timesForStop.slice(0,1).forEach(function(stoptime){
               var time = stoptime.time;
               // time is valid only if seconds are included
               if ( time.length < 8){
